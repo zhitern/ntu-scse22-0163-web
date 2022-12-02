@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-function App() {
+function MainPage() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="MainPage">
+      <header className="MainPage-header">
       <body>Main Page
       </body>
       
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainPage;
