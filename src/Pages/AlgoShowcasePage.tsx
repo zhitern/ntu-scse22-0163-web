@@ -4,7 +4,7 @@ function AlgoShowcasePage() {
   return (
     <div className="AlgoShowcasePage">
       <header className="AlgoShowcasePage-header">
-      <body>Main Page
+      <body>Algo Page
       </body>
       
       </header>
