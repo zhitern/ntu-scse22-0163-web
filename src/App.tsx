@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import './App.css';
+
 
 import MainPage from "./Pages/MainPage"
 import TempoTestPage from './Pages/TempoTestPage';
