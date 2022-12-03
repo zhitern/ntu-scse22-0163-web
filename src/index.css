@@ -1,36 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 
 /* base styles */
 * {
   margin: 0;
-  font-family: "Quicksand";
-  color: #333;
+  font-family: "Outfit";
+  color: rgb(27, 26, 26);
 }
+
+.Title {
+  position: absolute;
+  left: 0.75%;
+  right: 90.47%;
+  top: 5.06%;
+  bottom: 94.65%;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 28px;
+
+
+
+  color: #000000;
+}
+
 .navbar {
-  padding: 20px;
-  display: flex;
+  background-color: #70f1cb8e;
+  border-radius: 30px;
+  padding: 5px;
+  display:flex;
   align-items: center;
   max-width: 1500px;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
+  height: 50px;
+  margin:auto;
+  margin-top: 25px;
+  margin-right: 25px;
+  justify-content: space-around;
+  box-shadow:10px 10px 5px #00000042;
+  
 }
-.navbar h1 {
-  color: #000000;
-}
-.navbar .links {
-  margin-left: auto;
-}
+
 .navbar a {
-  margin-left: 16px;
+  color: #333;
+  font-size: 25px;
+  margin: 8px;
+  width: 16%;
+  font-weight: bold;
   text-decoration: none;
   padding: 6px;
+  display: inline;
+  border-right: 1px solid #000000;
 }
+
+.navbar a:last-child {
+  border-right: none;
+}
+
 .navbar a:hover {
-  color: #000000;
+  color: #968c8c;
   text-decoration: underline;
 }
-.content {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+
+.bannerText {
+  min-width: 600px;
+  position: absolute;
+  left: 8%;
+  right: 80.64%;
+  top: 20.21%;
+  bottom: 76.9%;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 70px;
+  line-height: 60px;
+  text-transform: capitalize;
+
+  letter-spacing: 2px;
+}
+
+.bannerImage {
+  width: 45%;
+  height: auto;
+  position: absolute;
+  right: 5%;
+  margin: 30px;
+  opacity: 0.9;
+  border-radius: 20px;
+}
+
+.bannerSubText {
+  position: absolute;
+  left: 8%;
+  right: 52.35%;
+  top: 60%;
+  bottom: 74.04%;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 28px;
+  /* or 106% */
+
+  text-decoration-line: underline;
+
+  color: #000000;
 }
