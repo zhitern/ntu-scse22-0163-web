@@ -9,57 +9,51 @@
 .flexContainer {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
 }
 
 .Top {
-  display: flex;
-  flex-shrink: 0;
-  border: 1px solid black;
+  display:flex;
+  align-items: center;
 }
 
 .Banner {
   display: flex;
-  flex-shrink: 0;
-  border: 1px solid black;
 }
 
-.regionSearch {
-  border: 1px solid black;
+.algoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.algoSection {
+  display: flex;
+  justify-content:space-evenly;
 }
 
 .Title {
-  flex-shrink: 0;
-  position: absolute;
-  left: 0.75%;
-  right: 90.47%;
-  top: 5.06%;
-  bottom: 94.65%;
+  margin: 10px;
 
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
   line-height: 28px;
 
-
-
   color: #000000;
 }
 
 .navbar {
+  position: relative;
+  left:110px;
   background-color: #70f1cb8e;
   border-radius: 30px;
   padding: 5px;
   display:flex;
   align-items: center;
-  max-width: 1400px;
+  min-width: 1400px;
   height: 50px;
-  margin:auto;
-  margin-top: 25px;
-  margin-right: 25px;
-  justify-content: space-around;
+  margin:10px;
+  justify-content: space-between;
   box-shadow:10px 10px 5px #00000042;
-  flex-shrink: 0;
   
 }
 
@@ -73,7 +67,6 @@
   padding: 6px;
   display: inline;
   border-right: 1px solid #000000;
-  flex-shrink: 0;
 }
 
 .navbar a:last-child {
@@ -86,9 +79,10 @@
 }
 
 .bannerText {
-  min-width: 600px;
-  position: absolute;
-  left: 8%;
+  /*min-width: 600px;*/
+  width: 500px;
+  position: relative;
+  left: 2%;
   right: 80.64%;
   top: 20.21%;
   bottom: 76.9%;
@@ -101,28 +95,12 @@
   filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
 
   letter-spacing: 2px;
-
-  flex-shrink: 0;
 }
 
-.bannerImage {
-  width: 45%;
-  height: auto;
-  position: absolute;
-  right: 5%;
-  margin: 30px;
-  opacity: 0.95;
-  border-radius: 20px;
-  filter: drop-shadow(0 0 2rem rgba(20, 220, 210, 0.781));
-  flex-shrink: 0;
-}
+.bannerSubText, .algoDescription {
+  position: relative;
+  top: 30%;
 
-.bannerSubText {
-  position: absolute;
-  left: 8%;
-  right: 52.35%;
-  top: 60%;
-  bottom: 74.04%;
 
   font-style: normal;
   font-weight: 600;
@@ -134,19 +112,29 @@
   filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
 
   color: #000000;
-
-  flex-shrink: 0;
 }
 
-.regionSearchBtn {
-  position: absolute;
+.bannerImage {
+  width: 45%;
+  height: auto;
+  position: static;
+  right: 5%;
+  margin: 30px;
+  opacity: 0.95;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 2rem rgba(20, 220, 210, 0.781));
+  flex: 1;
+}
+
+.algoSearchBtn {
+  position: static;
   left: 15.3%;
   right: 69%;
   top: 100%;
   bottom: 64.37%;
   
-  width:fit-content;
-  height: fit-content;
+  max-width:fit-content;
+  max-height: fit-content;
   /* Buttons */
   
   font-family: 'Outfit';
@@ -156,21 +144,11 @@
   line-height: 27px;
   /* or 142% */
   
-  display: flex;
-  align-items: center;
   text-align: center;
   text-decoration-line: underline;
   text-transform: capitalize;
   
   color: #000000;
 
-  flex-shrink: 0;
-}
 
-.item{
-  border: 3px solid rgb(206, 70, 70);
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  background-color: #000000;
 }
