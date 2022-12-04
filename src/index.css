@@ -5,6 +5,7 @@
   margin: 0;
   font-family: "Outfit";
   color: rgb(27, 26, 26);
+  font-size: large;
 }
 .flexContainer {
   display: flex;
@@ -27,7 +28,9 @@
 
 .algoSection {
   display: flex;
-  justify-content:space-evenly;
+  flex: 1;
+  align-items: center;
+  margin: 10px;
 }
 
 .Title {
@@ -127,14 +130,11 @@
 }
 
 .algoSearchBtn {
-  position: static;
-  left: 15.3%;
-  right: 69%;
-  top: 100%;
-  bottom: 64.37%;
+  position: relative;
+
   
-  max-width:fit-content;
-  max-height: fit-content;
+  width:fit-content;
+  height: fit-content;
   /* Buttons */
   
   font-family: 'Outfit';
