@@ -6,8 +6,30 @@
   font-family: "Outfit";
   color: rgb(27, 26, 26);
 }
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.Top {
+  display: flex;
+  flex-shrink: 0;
+  border: 1px solid black;
+}
+
+.Banner {
+  display: flex;
+  flex-shrink: 0;
+  border: 1px solid black;
+}
+
+.regionSearch {
+  border: 1px solid black;
+}
 
 .Title {
+  flex-shrink: 0;
   position: absolute;
   left: 0.75%;
   right: 90.47%;
@@ -30,19 +52,20 @@
   padding: 5px;
   display:flex;
   align-items: center;
-  max-width: 1500px;
+  max-width: 1400px;
   height: 50px;
   margin:auto;
   margin-top: 25px;
   margin-right: 25px;
   justify-content: space-around;
   box-shadow:10px 10px 5px #00000042;
+  flex-shrink: 0;
   
 }
 
 .navbar a {
   color: #333;
-  font-size: 25px;
+  font-size: 23px;
   margin: 8px;
   width: 16%;
   font-weight: bold;
@@ -50,6 +73,7 @@
   padding: 6px;
   display: inline;
   border-right: 1px solid #000000;
+  flex-shrink: 0;
 }
 
 .navbar a:last-child {
@@ -74,8 +98,11 @@
   font-size: 70px;
   line-height: 60px;
   text-transform: capitalize;
+  filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
 
   letter-spacing: 2px;
+
+  flex-shrink: 0;
 }
 
 .bannerImage {
@@ -84,8 +111,10 @@
   position: absolute;
   right: 5%;
   margin: 30px;
-  opacity: 0.9;
+  opacity: 0.95;
   border-radius: 20px;
+  filter: drop-shadow(0 0 2rem rgba(20, 220, 210, 0.781));
+  flex-shrink: 0;
 }
 
 .bannerSubText {
@@ -102,6 +131,46 @@
   /* or 106% */
 
   text-decoration-line: underline;
+  filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
 
   color: #000000;
+
+  flex-shrink: 0;
+}
+
+.regionSearchBtn {
+  position: absolute;
+  left: 15.3%;
+  right: 69%;
+  top: 100%;
+  bottom: 64.37%;
+  
+  width:fit-content;
+  height: fit-content;
+  /* Buttons */
+  
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 27px;
+  /* or 142% */
+  
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration-line: underline;
+  text-transform: capitalize;
+  
+  color: #000000;
+
+  flex-shrink: 0;
+}
+
+.item{
+  border: 3px solid rgb(206, 70, 70);
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: #000000;
 }
