@@ -1,0 +1,17 @@
+.body {
+    color: 'blue';
+}
+
+.AlgoShowcasePage {
+    color: 'black';
+  }
+
+.InputBox {
+    background-color: 'blue';
+    width: fit-content;
+    font-weight: 800;
+}
+
+.MapBoundary {
+    background-color: 'blue';
+}
