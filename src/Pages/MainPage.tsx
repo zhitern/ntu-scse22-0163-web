@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 import Navbar from '../Components/Navbar';
-import AlgoSection from '../Components/AlgoSection';
 import banner from '../image/banner.jpg';
 
 function MainPage() {
+
+  const [Algos, setAlgos] = useState([
+    {buttomText: 'Click for Algo 1', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 1 },
+    {buttomText: 'Click for Algo 2', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 2 },
+    {buttomText: 'Click for Algo 3', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 3 },
+    {buttomText: 'Click for Algo 4', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 4 }
+  ])
+
   return (
     <div className='flexContainer'>
 
@@ -25,10 +33,16 @@ function MainPage() {
       
       {/* Algos */}
       <div className="algoContainer">
-        <AlgoSection/>
-        <AlgoSection/>
-        <AlgoSection/>
-        <AlgoSection/>
+        {Algos.map((Algo)=>(
+            <div className="algoSection" key={Algo.id}>
+              <div style={{flex:'1', display:'flex'}}>
+                <Link to = {Algo.link} >
+                <button className='algoSearchBtn'>{Algo.buttomText}</button>
+                </Link>
+              </div>
+              <p style={{flex:'3'}} >{Algo.desc}</p>
+            </div>
+        ))}
       </div>
       
       

@@ -24,13 +24,20 @@
 .algoContainer {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 50px;
 }
 
 .algoSection {
   display: flex;
   flex: 1;
   align-items: center;
-  margin: 10px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px dotted black;
 }
 
 .Title {
@@ -131,10 +138,10 @@
 
 .algoSearchBtn {
   position: relative;
-
   
   width:fit-content;
   height: fit-content;
+  border-radius: 20px;
   /* Buttons */
   
   font-family: 'Outfit';
@@ -149,6 +156,8 @@
   text-transform: capitalize;
   
   color: #000000;
+}
 
-
+.algoSearchBtn:hover {
+  color: #f50000;
 }
