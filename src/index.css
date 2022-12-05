@@ -136,6 +136,21 @@
   flex: 1;
 }
 
+.algoStartTitle {
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 28px;
+  margin-top: 50px;
+  /* or 106% */
+
+  text-decoration-line: underline;
+  filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
+
+  color: #000000;
+}
+
 .algoSearchBtn {
   position: relative;
   

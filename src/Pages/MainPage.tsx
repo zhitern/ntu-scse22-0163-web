@@ -30,6 +30,7 @@ function MainPage() {
         
       </div>
       
+      <h2 className="algoStartTitle" style={{justifyContent:'center'}}>Algorithms</h2>
       
       {/* Algos */}
       <div className="algoContainer">
