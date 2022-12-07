@@ -1,19 +1,37 @@
 import React from 'react';
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
+
+import 'leaflet/dist/leaflet.css';
 import './AlgoShowcasePage.css';
+
+import Navbar from '../Components/Navbar';
+import { Icon } from 'leaflet';
 
 function AlgoShowcasePage() {
   return (
-    <div className="AlgoShowcasePage">
-      <header className="AlgoShowcasePage-header">
-      </header>
-      <body>
-        <div>
-          <h1 style={{display: "inline"}}>LOGO/TITLE</h1>
-          <div style={{display: "inline"}}>NAV BAR3</div>
+    <div>
+      <div className="Top">
+        <h1 className="Title">Title/logo</h1>
+        <Navbar/>
+      </div>      
+      <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
+        <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>
+          INPUT BOX
+          <div>test 1</div>
+          <div>test 2</div>
         </div>
-        <div className="InputBox">INPUT BOX</div>
-        <div className="MapBoundary">MAP ZONE</div>
-      </body>
+        <MapContainer style={{width: '65%', display: 'inline-block'}} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />also 
+          <Marker position={[51.505, -0.09]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </div>
     </div>
   );
 }
