@@ -14,7 +14,7 @@ function AlgoShowcasePage() {
         <h1 className="Title">Title/logo</h1>
         <Navbar/>
       </div>      
-      <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
+      <div style={{display: 'flex', paddingTop: '5%', height: '80vh', justifyContent: 'space-evenly'}}>
         <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>
           INPUT BOX
           <div>test 1</div>
