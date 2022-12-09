@@ -35,12 +35,14 @@ function AlgoShowcasePage() {
         <Navbar/>
       </div>
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
+
         <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>
           INPUT BOX
           <div>test 1</div>
           <div>test 2</div>
         </div>
-        <MapContainer id='map' style={{width: '65%', display: 'inline-block'}} center={[50.5, 30.5]} zoom={13}>
+
+        <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

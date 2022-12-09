@@ -5,7 +5,6 @@ import {
   Route,
 } from "react-router-dom";
 
-
 import MainPage from "./Pages/MainPage"
 import TempoTestPage from './Pages/TempoTestPage';
 import AlgoShowcasePage from './Pages/AlgoShowcasePage';
