@@ -34,23 +34,15 @@ function AlgoShowcasePage() {
         <h1 className="Title">Title/logo</h1>
         <Navbar/>
       </div>
-<<<<<<< HEAD
-      <div style={{display: 'flex', paddingTop: '5%', height: '70vh', justifyContent: 'space-evenly'}}>
-=======
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
->>>>>>> Hompage
         <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>
           INPUT BOX
           <div>test 1</div>
           <div>test 2</div>
         </div>
-<<<<<<< HEAD
-        <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-=======
 
         <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
->>>>>>> Hompage
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
