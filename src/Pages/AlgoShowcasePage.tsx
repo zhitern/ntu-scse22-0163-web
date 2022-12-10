@@ -1,12 +1,12 @@
 import React from 'react';
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
 import { useState } from 'react';
 
 import 'leaflet/dist/leaflet.css';
 import './AlgoShowcasePage.css';
 
 import Navbar from '../Components/Navbar';
-import { LatLng } from 'leaflet';
+import { Icon, LatLng } from 'leaflet';
 
 function LocateSelf() {
   const [position, setPosition] = useState<LatLng | null>(null)
@@ -47,7 +47,7 @@ function AlgoShowcasePage() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <LocateSelf/>
+          <LocateSelf />
         </MapContainer>
       </div>
     </div>
