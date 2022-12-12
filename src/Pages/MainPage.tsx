@@ -4,14 +4,20 @@ import { Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import banner from '../image/banner.jpg';
 
+function algosInitial(){
+  console.log('run')
+  return [
+  {buttomText: 'Click for Algo 1', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 1 },
+  {buttomText: 'Click for Algo 2', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 2 },
+  {buttomText: 'Click for Algo 3', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 3 },
+  {buttomText: 'Click for Algo 4', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 4 }]
+}
+
 function MainPage() {
 
-  const [Algos, setAlgos] = useState([
-    {buttomText: 'Click for Algo 1', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 1 },
-    {buttomText: 'Click for Algo 2', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 2 },
-    {buttomText: 'Click for Algo 3', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 3 },
-    {buttomText: 'Click for Algo 4', desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus magnam officia deserunt expedita rem, illo blanditiis sequi quam et! Officiis accusantium dolores a, incidunt minus eius quasi corrupti dignissimos quod?', link: "/AlgoShowcasePage", id: 4 }
-  ])
+  
+
+  const [Algos, setAlgos] = useState(() => algosInitial())
 
   return (
     <div className='flexContainer'>
