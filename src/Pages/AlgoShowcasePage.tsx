@@ -1,14 +1,17 @@
 import React from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMapEvents, FeatureGroup } from 'react-leaflet'
+import { EditControl } from 'react-leaflet-draw';
 import { useState } from 'react';
 
 import 'leaflet/dist/leaflet.css';
 import './AlgoShowcasePage.css';
+import "leaflet-draw/dist/leaflet.draw.css";
 
 import Navbar from '../Components/Navbar';
-import { Icon, LatLng } from 'leaflet';
+import { Icon, LatLng, map, rectangle } from 'leaflet';
 
 function LocateSelf() {
+
   const [position, setPosition] = useState<LatLng | null>(null)
   const map = useMapEvents({
     click() {
@@ -25,9 +28,22 @@ function LocateSelf() {
       <Popup>You are here</Popup>
     </Marker>
   )
-}
+};
 
 function AlgoShowcasePage() {
+  const[mapShapes, setMapShapes] = useState([{}]);
+
+  const _onCreate = (e: any) => {
+    console.log(e);
+
+    const{layerType, layer} = e;
+    
+    // add if statement if need to treate shapes differently
+    const {_leaflet_id} = layer;
+    setMapShapes(layers => [...layers, {id:_leaflet_id, latlngs: layer.getLatLngs()[0]}]);
+    console.log(JSON.stringify(mapShapes))
+  };
+
   return (
     <div style={{minHeight: '100vh'}}>
       <div className="Top" style={{maxHeight:'20vh'}}>
@@ -42,14 +58,32 @@ function AlgoShowcasePage() {
           <div>test 2</div>
         </div>
 
-        <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
+        <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[1.3484815128554006, 103.68351020563715]} zoom={13} scrollWheelZoom={true}>
+          
+          <FeatureGroup>
+            <EditControl position='topright' 
+                         onCreated={_onCreate}
+                         draw={{
+                          rectangle:true,
+                          polygon:true,
+                          polyline:false,
+                          circle:false,
+                          circlemarker:false
+                         }} />
+          </FeatureGroup>
+          
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <LocateSelf />
+
         </MapContainer>
+
       </div>
+      <div style={{width: 'match-parent'}}>
+        <pre>{ JSON.stringify(mapShapes)}</pre>
+      </div>
+      
     </div>
   );
 }
