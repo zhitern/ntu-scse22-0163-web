@@ -31,7 +31,7 @@ function LocateSelf() {
 };
 
 function AlgoShowcasePage() {
-  const[mapShapes, setMapShapes] = useState([{}]);
+  const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
 
   const _onCreate = (e: any) => {
     console.log(e);
@@ -41,7 +41,7 @@ function AlgoShowcasePage() {
     // add if statement if need to treate shapes differently
     // to-do: limit user to 1 input shape
     const {_leaflet_id} = layer;
-    setMapShapes(layers => [...layers, {id:_leaflet_id, latlngs: layer.getLatLngs()[0]}]);
+    setMapShapes({id:_leaflet_id, latlngs: layer.getLatLngs()[0]});
   };
 
   return (
