@@ -39,9 +39,9 @@ function AlgoShowcasePage() {
     const{layerType, layer} = e;
     
     // add if statement if need to treate shapes differently
+    // to-do: limit user to 1 input shape
     const {_leaflet_id} = layer;
     setMapShapes(layers => [...layers, {id:_leaflet_id, latlngs: layer.getLatLngs()[0]}]);
-    console.log(JSON.stringify(mapShapes))
   };
 
   return (
@@ -68,7 +68,8 @@ function AlgoShowcasePage() {
                           polygon:true,
                           polyline:false,
                           circle:false,
-                          circlemarker:false
+                          circlemarker:false,
+                          marker:false
                          }} />
           </FeatureGroup>
           
@@ -81,7 +82,7 @@ function AlgoShowcasePage() {
 
       </div>
       <div style={{width: 'match-parent'}}>
-        <pre>{ JSON.stringify(mapShapes)}</pre>
+        <p>{ JSON.stringify(mapShapes)}</p>
       </div>
       
     </div>
