@@ -65,7 +65,7 @@ function RegionSearchPage() {
                          onCreated={_onCreate}
                          draw={{
                           rectangle:true,
-                          polygon:true,
+                          polygon:false,
                           polyline:false,
                           circle:false,
                           circlemarker:false,
