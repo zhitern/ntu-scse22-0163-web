@@ -50,6 +50,7 @@ function RegionSearchPage() {
         <h1 className="Title">Title/logo</h1>
         <Navbar/>
       </div>
+      <div className="algoStartTitle">Region Search</div>
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
         <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>

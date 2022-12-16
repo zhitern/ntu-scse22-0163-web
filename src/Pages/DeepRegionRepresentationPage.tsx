@@ -44,12 +44,22 @@ function DeepRegionRepresentationPage() {
     setMapShapes({id:_leaflet_id, latlngs: layer.getLatLngs()[0]});
   };
 
+
+  const _onDeleted = (e:any) => {
+    setMapShapes({id:'', latlngs: ''});
+  }
+
+   
+
   return (
     <div style={{minHeight: '100vh'}}>
       <div className="Top" style={{maxHeight:'20vh'}}>
         <h1 className="Title">Title/logo</h1>
         <Navbar/>
       </div>
+
+      <div className="algoStartTitle">Deep Region Representation</div>
+
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
         <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>
@@ -63,6 +73,7 @@ function DeepRegionRepresentationPage() {
           <FeatureGroup>
             <EditControl position='topright' 
                          onCreated={_onCreate}
+                         onDeleted={_onDeleted}
                          draw={{
                           rectangle:true,
                           polygon:true,
