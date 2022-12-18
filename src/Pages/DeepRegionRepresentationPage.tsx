@@ -8,7 +8,7 @@ import './AlgoShowcasePage.css';
 import "leaflet-draw/dist/leaflet.draw.css";
 
 import Navbar from '../Components/Navbar';
-import { Icon, LatLng, map, rectangle } from 'leaflet';
+import { control, Icon, LatLng, map, rectangle } from 'leaflet';
 
 function LocateSelf() {
 
@@ -33,6 +33,13 @@ function LocateSelf() {
 function DeepRegionRepresentationPage() {
   const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
 
+  const[drawFlag, setDrawFlag] = useState({ rectangle:true,
+                                            polygon:true,
+                                            polyline:false,
+                                            circle:false,
+                                            circlemarker:false,
+                                            marker:false });
+
   const _onCreate = (e: any) => {
     console.log(e);
 
@@ -42,6 +49,12 @@ function DeepRegionRepresentationPage() {
     // to-do: limit user to 1 input shape
     const {_leaflet_id} = layer;
     setMapShapes({id:_leaflet_id, latlngs: layer.getLatLngs()[0]});
+    setDrawFlag({ rectangle:false,
+                  polygon:false,
+                  polyline:false,
+                  circle:false,
+                  circlemarker:false,
+                  marker:false });
   };
 
   const _onEdited = (e:any) => {
@@ -50,10 +63,11 @@ function DeepRegionRepresentationPage() {
    
 
   const _onDeleted = (e:any) => {
+    
     setMapShapes({id:'', latlngs: ''});
-  }
-
-   
+    console.log(e);
+    
+  };
 
   return (
     <div style={{minHeight: '100vh'}}>
@@ -78,15 +92,8 @@ function DeepRegionRepresentationPage() {
             <EditControl position='topright' 
                          onCreated={_onCreate}
                          onEdited={_onEdited}
-                         onDeleted={_onDeleted}
-                         draw={{
-                          rectangle:true,
-                          polygon:true,
-                          polyline:false,
-                          circle:false,
-                          circlemarker:false,
-                          marker:false
-            }} />
+                         onDeleteStop={_onDeleted}
+                         draw={drawFlag} />
           </FeatureGroup>
           
           <TileLayer
