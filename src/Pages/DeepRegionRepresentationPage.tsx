@@ -88,7 +88,6 @@ function DeepRegionRepresentationPage() {
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
         <div className="InputBox" style={{background: 'white', display: 'inline-block'}}>
-          INPUT BOX
           <form 
             onSubmit={handleSubmit}
             style={{display:'flex', flexDirection:'column'}}>
