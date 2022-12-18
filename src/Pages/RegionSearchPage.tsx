@@ -33,6 +33,13 @@ function LocateSelf() {
 function RegionSearchPage() {
   const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
 
+  const[drawFlag, setDrawFlag] = useState({ rectangle:true,
+    polygon:false,
+    polyline:false,
+    circle:false,
+    circlemarker:false,
+    marker:false });
+
   const _onCreate = (e: any) => {
     console.log(e);
 
@@ -42,6 +49,12 @@ function RegionSearchPage() {
     // to-do: limit user to 1 input shape
     const {_leaflet_id} = layer;
     setMapShapes({id:_leaflet_id, latlngs: layer.getLatLngs()[0]});
+    setDrawFlag({ rectangle:false,
+      polygon:false,
+      polyline:false,
+      circle:false,
+      circlemarker:false,
+      marker:false });
   };
 
   const _onEdited = (e:any) => {
@@ -74,14 +87,7 @@ function RegionSearchPage() {
                          onCreated={_onCreate}
                          onEdited={_onEdited}
                          onDeleted={_onDeleted}
-                         draw={{
-                          rectangle:true,
-                          polygon:false,
-                          polyline:false,
-                          circle:false,
-                          circlemarker:false,
-                          marker:false
-                         }} />
+                         draw={drawFlag} />
           </FeatureGroup>
           
           <TileLayer
