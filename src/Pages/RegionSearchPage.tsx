@@ -40,6 +40,8 @@ function RegionSearchPage() {
     circlemarker:false,
     marker:false });
 
+  const [kValue, setKValue] = useState(1);
+
   const _onCreate = (e: any) => {
     console.log(e);
 
@@ -65,6 +67,13 @@ function RegionSearchPage() {
     setMapShapes({id:'', latlngs: ''});
   }
 
+  function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>)  {
+    event.preventDefault();
+    const latlngs = mapShapes.latlngs;
+    const query = {kValue, latlngs}
+    console.log(query);
+  }
+
   return (
     <div style={{minHeight: '100vh'}}>
       <div className="Top" style={{maxHeight:'20vh'}}>
@@ -74,10 +83,22 @@ function RegionSearchPage() {
       <div className="algoStartTitle">Region Search</div>
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
-        <div className="InputBox" style={{background: 'red', display: 'inline-block'}}>
-          INPUT BOX
-          <div>test 1</div>
-          <div>test 2</div>
+        <div className="InputBox" style={{background: 'white', display: 'inline-block', maxWidth:'150px'}}>
+          <form 
+            onSubmit={handleSubmit}
+            style={{display:'flex', flexDirection:'column'}}>
+            <label>Step 1: Enter K value </label>
+            <input type="number"
+                   required
+                   value={kValue}
+                   onChange = {(e) => setKValue(parseInt(e.target.value))}
+            />
+            <label>Step 2: Draw a rectangle on the map</label>
+            <div style={{maxWidth: '100px'}}>
+              <p>{ JSON.stringify(mapShapes)}</p>
+            </div>
+            <button>hi</button>
+          </form>
         </div>
 
         <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[1.3484815128554006, 103.68351020563715]} zoom={13} scrollWheelZoom={true}>
@@ -98,9 +119,7 @@ function RegionSearchPage() {
         </MapContainer>
 
       </div>
-      <div style={{width: 'match-parent'}}>
-        <p>{ JSON.stringify(mapShapes)}</p>
-      </div>
+      
       
     </div>
   );
