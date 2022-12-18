@@ -44,6 +44,14 @@ function RegionSearchPage() {
     setMapShapes({id:_leaflet_id, latlngs: layer.getLatLngs()[0]});
   };
 
+  const _onEdited = (e:any) => {
+    setMapShapes({id:mapShapes.id, latlngs: Object.values(e.layers._layers)[0].getLatLngs()[0]});
+  };
+
+  const _onDeleted = (e:any) => {
+    setMapShapes({id:'', latlngs: ''});
+  }
+
   return (
     <div style={{minHeight: '100vh'}}>
       <div className="Top" style={{maxHeight:'20vh'}}>
@@ -64,6 +72,8 @@ function RegionSearchPage() {
           <FeatureGroup>
             <EditControl position='topright' 
                          onCreated={_onCreate}
+                         onEdited={_onEdited}
+                         onDeleted={_onDeleted}
                          draw={{
                           rectangle:true,
                           polygon:false,
