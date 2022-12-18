@@ -65,14 +65,14 @@ function RegionSearchPage() {
 
   const _onDeleted = (e:any) => {
     setMapShapes({id:'', latlngs: ''});
-  }
+  };
 
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
     const latlngs = mapShapes.latlngs;
     const query = {kValue, latlngs}
     console.log(query);
-  }
+  };
 
   return (
     <div style={{minHeight: '100vh'}}>
@@ -97,7 +97,7 @@ function RegionSearchPage() {
             <div style={{maxWidth: '100px'}}>
               <p>{ JSON.stringify(mapShapes)}</p>
             </div>
-            <button>hi</button>
+            <button>Submit</button>
           </form>
         </div>
 
