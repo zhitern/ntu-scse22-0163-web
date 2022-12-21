@@ -57,6 +57,7 @@ const Map = (props:any) => {
       
     const _onEdited = (e:any) => {
       props.setMapShapes({id:props.mapShapes.id, latlngs: Object.values(e.layers._layers)[0].getLatLngs()[0]});
+      setRsResponse(null);
     };
     
 
@@ -64,6 +65,7 @@ const Map = (props:any) => {
     
       props.setMapShapes({id:'', latlngs: ''});
       console.log(e);
+      setRsResponse(null);
     
     };
 
