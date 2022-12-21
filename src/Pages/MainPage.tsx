@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-import Navbar from '../Components/Navbar';
 import banner from '../image/banner.jpg';
 
 function algosInitial(){
