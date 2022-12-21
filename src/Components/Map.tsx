@@ -93,7 +93,8 @@ const Map = (props:any) => {
               style={{display:'flex', flexDirection:'column'}}>
               <label>Step 1: Draw a polygon or rectangle </label>
               <div style={{maxWidth: '100px'}}>
-                <p>{ JSON.stringify(props.mapShapes)}</p>
+                <p>{ JSON.stringify(props.mapShapes,function(key, val) {
+                  return val.toFixed ? Number(val.toFixed(3)) : val;})}</p>
               </div>
               <button>Submit</button>
             </form>}
