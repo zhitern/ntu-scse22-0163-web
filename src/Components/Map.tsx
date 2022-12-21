@@ -135,9 +135,6 @@ const Map = (props:any) => {
           </MapContainer>
   
         </div>
-        <div style={{width: 'match-parent'}}>
-          <p>{ JSON.stringify(props.mapShapes)}</p>
-        </div>
         
       </div> 
     );

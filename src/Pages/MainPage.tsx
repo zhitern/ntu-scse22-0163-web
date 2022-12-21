@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import banner from '../image/banner.jpg';
 
 function algosInitial(){
-  console.log('run')
   return [
   
   
