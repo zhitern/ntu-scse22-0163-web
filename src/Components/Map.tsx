@@ -7,21 +7,14 @@ import 'leaflet/dist/leaflet.css';
 import '../Pages/AlgoShowcasePage.css';
 import "leaflet-draw/dist/leaflet.draw.css";
 
-import { control, Icon, LatLng, map, rectangle } from 'leaflet';
+import { control, Icon, LatLng, LatLngBoundsExpression, map, rectangle } from 'leaflet';
 
 const Map = (props:any) => {
 
     // states:
-    const polygon = [
-      [1.368, 103.944],
-      [1.353, 103.92],
-      [1.347, 103.969],
-    ]
 
-    const rectangle = [
-      [1.348, 103.69],
-      [1.371, 103.733]
-    ]
+    const [rsResponse, setRsResponse] = useState(null);
+
     const limeOptions = { color: 'lime' }
 
     // functions:
@@ -63,22 +56,29 @@ const Map = (props:any) => {
       };
       
     const _onEdited = (e:any) => {
-    props.setMapShapes({id:props.mapShapes.id, latlngs: Object.values(e.layers._layers)[0].getLatLngs()[0]});
+      props.setMapShapes({id:props.mapShapes.id, latlngs: Object.values(e.layers._layers)[0].getLatLngs()[0]});
     };
     
 
     const _onDeleted = (e:any) => {
     
-    props.setMapShapes({id:'', latlngs: ''});
-    console.log(e);
+      props.setMapShapes({id:'', latlngs: ''});
+      console.log(e);
     
     };
 
     function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
-    event.preventDefault();
-    const latlngs = props.mapShapes.latlngs;
-    const query = {latlngs}
-    console.log(query);
+      event.preventDefault();
+      const latlngs = props.mapShapes.latlngs;
+      const query = {latlngs}
+      //console.log(query);
+      fetch('http://localhost:8000/DRR')
+        .then(res =>{
+          return res.json()
+        })
+        .then(data =>{
+          console.log(data);
+        })
     };
 
     function handleSubmitRS(event: React.SyntheticEvent<HTMLFormElement>)  {
@@ -87,6 +87,13 @@ const Map = (props:any) => {
       const kValue = props.kValue;
       const query = {kValue, latlngs}
       console.log(query);
+      fetch('http://localhost:8000/RS')
+        .then(res =>{
+          return res.json()
+        })
+        .then(data =>{
+          setRsResponse(data);
+        })
     };
 
     return ( 
@@ -99,33 +106,37 @@ const Map = (props:any) => {
   
           <div className="InputBox" style={{background: 'white', display: 'inline-block'}}>
             
-            { props.page === 'Deep Region Representation' && <form 
-              onSubmit={handleSubmitDRR}
-              style={{display:'flex', flexDirection:'column'}}>
-              <label>Step 1: Draw a polygon or rectangle </label>
-              <div style={{maxWidth: '100px'}}>
-                <p>{ JSON.stringify(props.mapShapes,function(key, val) {
-                  return val.toFixed ? Number(val.toFixed(3)) : val;})}</p>
-              </div>
-              <button>Submit</button>
-            </form>}
+            { // Deep Region Search form
+              props.page === 'Deep Region Representation' && <form 
+                onSubmit={handleSubmitDRR}
+                style={{display:'flex', flexDirection:'column'}}>
+                <label>Step 1: Draw a polygon or rectangle </label>
+                <div style={{maxWidth: '100px'}}>
+                  <p>{ JSON.stringify(props.mapShapes,function(key, val) {
+                    return val.toFixed ? Number(val.toFixed(3)) : val;})}</p>
+                </div>
+                <button>Submit</button>
+              </form>
+            }
 
-            { props.page === 'Region Search' && 
-              <form 
-              onSubmit={handleSubmitRS}
-              style={{display:'flex', flexDirection:'column'}}>
-              <label>Step 1: Enter K value </label>
-              <input type="number"
-                    required
-                    value={props.kValue}
-                    onChange = {(e) => props.setKValue(parseInt(e.target.value))}
-              />
-              <label>Step 2: Draw a rectangle on the map</label>
-              <div style={{maxWidth: '100px'}}>
-                <p>{ JSON.stringify(props.mapShapes)}</p>
-              </div>
-              <button>Submit</button>
-            </form>}
+            { // Region Search form
+              props.page === 'Region Search' && 
+                <form 
+                onSubmit={handleSubmitRS}
+                style={{display:'flex', flexDirection:'column'}}>
+                <label>Step 1: Enter K value </label>
+                <input type="number"
+                      required
+                      value={props.kValue}
+                      onChange = {(e) => props.setKValue(parseInt(e.target.value))}
+                />
+                <label>Step 2: Draw a rectangle on the map</label>
+                <div style={{maxWidth: '100px'}}>
+                  <p>{ JSON.stringify(props.mapShapes)}</p>
+                </div>
+                <button>Submit</button>
+              </form>
+            }
 
           </div>
   
@@ -144,8 +155,12 @@ const Map = (props:any) => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <LocateSelf/>
-
-            <Rectangle bounds={rectangle} pathOptions={limeOptions} />
+            
+            {// Region Search response display
+              rsResponse && rsResponse.map((points: { latlngs: LatLngBoundsExpression; id: React.Key | null | undefined; }) =>(
+                <Rectangle bounds={points.latlngs} pathOptions={limeOptions} key={points.id} />
+              )) 
+            }
 
           </MapContainer>
   
