@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents, FeatureGroup } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMapEvents, FeatureGroup, Polygon, Rectangle } from 'react-leaflet'
 import { EditControl } from 'react-leaflet-draw';
 import { useState } from 'react';
 
@@ -12,6 +12,17 @@ import { control, Icon, LatLng, map, rectangle } from 'leaflet';
 const Map = (props:any) => {
 
     // states:
+    const polygon = [
+      [1.368, 103.944],
+      [1.353, 103.92],
+      [1.347, 103.969],
+    ]
+
+    const rectangle = [
+      [1.348, 103.69],
+      [1.371, 103.733]
+    ]
+    const limeOptions = { color: 'lime' }
 
     // functions:
     function LocateSelf() {
@@ -133,6 +144,9 @@ const Map = (props:any) => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <LocateSelf/>
+
+            <Rectangle bounds={rectangle} pathOptions={limeOptions} />
+
           </MapContainer>
   
         </div>
