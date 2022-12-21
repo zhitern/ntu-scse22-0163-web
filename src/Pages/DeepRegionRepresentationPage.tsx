@@ -58,7 +58,8 @@ function DeepRegionRepresentationPage() {
   };
 
   const _onEdited = (e:any) => {
-    setMapShapes({id:mapShapes.id, latlngs: e.layers._layers[0].getLatLngs()[0]});
+    const values = Object.keys(e.layers._layers).map(key => e.layers._layers[key]);
+    setMapShapes({id:mapShapes.id, latlngs: values[0].getLatLngs()[0]});
   };
    
 

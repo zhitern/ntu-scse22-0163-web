@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents, FeatureGroup } from 'react-leaflet'
 import { EditControl } from 'react-leaflet-draw';
 import { useState } from 'react';
@@ -32,8 +32,10 @@ function LocateSelf() {
 
 function RegionSearchPage() {
   const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
+  const [map, setMap] = useState(null)
 
-  const[drawFlag, setDrawFlag] = useState({ rectangle:true,
+  const[drawFlag, setDrawFlag] = useState({ 
+    rectangle:true,
     polygon:false,
     polyline:false,
     circle:false,
@@ -60,11 +62,18 @@ function RegionSearchPage() {
   };
 
   const _onEdited = (e:any) => {
-    setMapShapes({id:mapShapes.id, latlngs: e.layers._layers[0].getLatLngs()[0]});
+    const values = Object.keys(e.layers._layers).map(key => e.layers._layers[key]);
+    setMapShapes({id:mapShapes.id, latlngs: values[0].getLatLngs()[0]});
   };
 
   const _onDeleted = (e:any) => {
     setMapShapes({id:'', latlngs: ''});
+    setDrawFlag({ rectangle:true,
+      polygon:false,
+      polyline:false,
+      circle:false,
+      circlemarker:false,
+      marker:false });
   };
 
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>)  {
@@ -101,7 +110,13 @@ function RegionSearchPage() {
           </form>
         </div>
 
-        <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[1.3484815128554006, 103.68351020563715]} zoom={13} scrollWheelZoom={true}>
+        <MapContainer 
+        style={{height: 'match-parent', 
+        width: '65%', 
+        display: 'inline-block'}} 
+        center={[1.3484815128554006, 103.68351020563715]} 
+        zoom={13} 
+        scrollWheelZoom={true}>
           
           <FeatureGroup>
             <EditControl position='topright' 
@@ -115,7 +130,6 @@ function RegionSearchPage() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <LocateSelf/>
         </MapContainer>
 
       </div>
