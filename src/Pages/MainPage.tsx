@@ -23,11 +23,6 @@ function MainPage() {
 
   return (
     <div className='flexContainer'>
-
-      <div className="Top">
-        <h1 className="Title">Title/logo</h1>
-        <Navbar/>
-      </div>
       
       <div className="Banner">
         <div className="bannerLeft" style={{display:'flex', flexDirection:'column', flex:'1', alignItems:'center'}}>

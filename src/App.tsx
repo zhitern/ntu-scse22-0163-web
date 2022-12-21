@@ -8,9 +8,16 @@ import {
 import MainPage from "./Pages/MainPage"
 import DeepRegionRepresentationPage from './Pages/DeepRegionRepresentationPage';
 import RegionSearchPage from './Pages/RegionSearchPage';
+import Navbar from './Components/Navbar';
 
 function App() {
   return <BrowserRouter>
+
+    <div className="Top" style={{maxHeight:'20vh'}}>
+          <h1 className="Title">Title/logo</h1>
+          <Navbar/>
+    </div>
+
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="DeepRegionRepresentationPage" element={<DeepRegionRepresentationPage />} />

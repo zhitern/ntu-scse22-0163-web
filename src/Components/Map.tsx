@@ -7,7 +7,6 @@ import 'leaflet/dist/leaflet.css';
 import '../Pages/AlgoShowcasePage.css';
 import "leaflet-draw/dist/leaflet.draw.css";
 
-import Navbar from "./Navbar";
 import { control, Icon, LatLng, map, rectangle } from 'leaflet';
 
 const Map = (props:any) => {
@@ -81,10 +80,7 @@ const Map = (props:any) => {
 
     return ( 
         <div style={{minHeight: '100vh'}}>
-        <div className="Top" style={{maxHeight:'20vh'}}>
-          <h1 className="Title">Title/logo</h1>
-          <Navbar/>
-        </div>
+        
   
         <div className="algoStartTitle">{props.page}</div>
   
