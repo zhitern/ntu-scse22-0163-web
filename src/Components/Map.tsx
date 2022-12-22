@@ -14,6 +14,7 @@ const Map = (props:any) => {
     // states:
 
     const [rsResponse, setRsResponse] = useState(null);
+    const [drrResponse, setDrrResponse] = useState(null);
 
     const limeOptions = { color: 'lime' }
 
@@ -58,6 +59,7 @@ const Map = (props:any) => {
     const _onEdited = (e:any) => {
       props.setMapShapes({id:props.mapShapes.id, latlngs: Object.values(e.layers._layers)[0].getLatLngs()[0]});
       setRsResponse(null);
+      setDrrResponse(null);
     };
     
 
@@ -66,7 +68,7 @@ const Map = (props:any) => {
       props.setMapShapes({id:'', latlngs: ''});
       console.log(e);
       setRsResponse(null);
-    
+      setDrrResponse(null);
     };
 
     function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
@@ -80,6 +82,13 @@ const Map = (props:any) => {
         })
         .then(data =>{
           console.log(data);
+          fetch('http://localhost:8000/DRR')
+          .then(res =>{
+            return res.json()
+          })
+          .then(data =>{
+            setDrrResponse(data);
+          })
         })
     };
 
@@ -115,7 +124,8 @@ const Map = (props:any) => {
                 <label>Step 1: Draw a polygon or rectangle </label>
                 <div style={{maxWidth: '100px'}}>
                   <p>{ JSON.stringify(props.mapShapes,function(key, val) {
-                    return val.toFixed ? Number(val.toFixed(3)) : val;})}</p>
+                    return val.toFixed ? Number(val.toFixed(3)) : val;})}
+                  </p>
                 </div>
                 <button>Submit</button>
               </form>
@@ -134,10 +144,20 @@ const Map = (props:any) => {
                 />
                 <label>Step 2: Draw a rectangle on the map</label>
                 <div style={{maxWidth: '100px'}}>
-                  <p>{ JSON.stringify(props.mapShapes)}</p>
+                  <p>{ JSON.stringify(props.mapShapes,function(key, val) {
+                    return val.toFixed ? Number(val.toFixed(3)) : val;})}
+                  </p>
                 </div>
                 <button>Submit</button>
               </form>
+            }
+            
+            {// Deep Region Representation response display
+              drrResponse && 
+              drrResponse.map((stat: any) => (
+                <p key={stat.id}>{stat.id}: {stat.value}</p>
+              ))
+
             }
 
           </div>
@@ -163,6 +183,7 @@ const Map = (props:any) => {
                 <Rectangle bounds={points.latlngs} pathOptions={limeOptions} key={points.id} />
               )) 
             }
+
 
           </MapContainer>
   
