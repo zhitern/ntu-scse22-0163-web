@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Map from '../Components/Map';
 
-function DeepRegionRepresentationPage() {
+function RegionSearchPage() {
   const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
   const [map, setMap] = useState(null)
 
@@ -22,4 +22,4 @@ function DeepRegionRepresentationPage() {
   );
 }
 
-export default DeepRegionRepresentationPage;
+export default RegionSearchPage;
