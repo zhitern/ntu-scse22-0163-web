@@ -2,15 +2,13 @@ import React from 'react';
 
 const InputForm = (props: any) => {
     return ( 
-        <div className="InputBox" style={{background: 'lightgray', display: 'inline-block', borderRadius: '15px'}}>
-
               <form 
-              style={{display:'flex', flexDirection:'column', padding: '10px'}}>
+              className="InputBox"
+              onSubmit={props.onSubmit}
+              style={{background: 'lightgray', display: 'flex', borderRadius: '15px', flexDirection:'column', padding: '10px'}}>
                 {props.children}
-              <button>Submit</button>
+                <input type="submit" value="Submit" />
             </form>
-          
-        </div>
     );
 }
  
