@@ -10,6 +10,7 @@ import "leaflet-draw/dist/leaflet.draw.css";
 import { control, Icon, LatLng, LatLngBoundsExpression, map, rectangle } from 'leaflet';
 
 const Map = (props:any) => {
+    const [displayDrawTools, SetDisplayDrawTools] = useState(true)
 
     // functions:
     function LocateSelf() {
@@ -33,20 +34,11 @@ const Map = (props:any) => {
       };
 
     const _onCreate = (e: any) => {
-        console.log(e);
+        SetDisplayDrawTools(false);
     
         const{layerType, layer} = e;
-        
-        // add if statement if need to treate shapes differently
-        // to-do: limit user to 1 input shape
         const {_leaflet_id} = layer;
         props.setMapShapes({id:_leaflet_id, latlngs: layer.getLatLngs()[0]});
-        props.setDrawFlag({ rectangle:false,
-                      polygon:false,
-                      polyline:false,
-                      circle:false,
-                      circlemarker:false,
-                      marker:false });
       };
       
     const _onEdited = (e:any) => {
@@ -56,7 +48,11 @@ const Map = (props:any) => {
     
 
     const _onDeleted = (e:any) => {
-    
+      //add error check to make sure theres <= 0 shapes in array before enabling draw again
+      // if (drawnItems.getLayers().length === 0){
+      //   SetDisplayDrawTools(true);
+      // }
+      SetDisplayDrawTools(true);
       props.setMapShapes({id:'', latlngs: ''});
     };
 
@@ -64,11 +60,34 @@ const Map = (props:any) => {
           <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[1.3484815128554006, 103.68351020563715]} zoom={13} scrollWheelZoom={true}>
             
             <FeatureGroup>
-              <EditControl position='topright' 
+              {displayDrawTools && <EditControl position='topright' 
                            onCreated={_onCreate}
                            onEdited={_onEdited}
                            onDeleteStop={_onDeleted}
-                           draw={props.drawFlag} />
+                           draw={props.drawFlag} 
+                           edit = {{edit: false, remove: false}} />}
+              {displayDrawTools && <EditControl position='topright' 
+                           onCreated={_onCreate}
+                           onEdited={_onEdited}
+                           onDeleteStop={_onDeleted}
+                           draw={{ rectangle:false,
+                            polygon:false,
+                            polyline:false,
+                            circle:false,
+                            circlemarker:false,
+                            marker:false }} 
+                           edit = {{edit: true, remove: true}} />}
+              {!displayDrawTools && <EditControl position='topright' 
+                           onCreated={_onCreate}
+                           onEdited={_onEdited}
+                           onDeleteStop={_onDeleted}
+                           draw={{ rectangle:false,
+                            polygon:false,
+                            polyline:false,
+                            circle:false,
+                            circlemarker:false,
+                            marker:false }} 
+                           edit = {{edit: true, remove: true}} />}
             </FeatureGroup>
             
             <TileLayer
