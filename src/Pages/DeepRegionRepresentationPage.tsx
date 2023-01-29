@@ -4,7 +4,7 @@ import Map from '../Components/Map';
 import InputForm from '../Components/InputForm';
 
 function DeepRegionRepresentationPage() {
-  const [drrResponse, setDrrResponse] = useState(null);
+
   const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
 
   const[drawFlag, setDrawFlag] = useState({ rectangle:true,
@@ -14,19 +14,29 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
+  const [drrResponse, setDrrResponse] = useState({ "result":{
+                                            "stat":400,
+                                            "remark":null
+                                          },
+
+                                          "data":{
+                                            "land_use_truth":null,
+                                            "land_use_pred":null,
+                                            "population_truth":null,
+                                            "population_pred":null
+                                          } 
+                                        })
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
     const latlngs = mapShapes.latlngs;
     console.log(latlngs);
+
     // Building the query
     const query = {"region": {"lat": Math.round(latlngs[1]["lat"]*1000)/1000, 
                          "lng":  Math.round(latlngs[1]["lng"]*1000)/1000, 
                          "h": Math.abs(Math.round((latlngs[1]["lat"] - latlngs[0]["lat"])*1000)/1000),
                          "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
-    
-  
-    //const query = {latlngs}
 
     console.log(query);
     fetch('http://localhost:8000/DRR')
@@ -40,7 +50,7 @@ function DeepRegionRepresentationPage() {
           return res.json()
         })
         .then(data =>{
-          setDrrResponse(data);
+          setDrrResponse(data[0]);
         })
       })
   };
@@ -56,14 +66,26 @@ function DeepRegionRepresentationPage() {
               <InputForm
                 onSubmit={handleSubmitDRR}
                 >
-                <label>Step 1: Draw a polygon or rectangle </label>
+                <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
+                <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape:{'\n'}{'\n'}</label>
                 <div style={{maxWidth: '100px'}}>
                   <p>{ JSON.stringify(mapShapes,function(key, val) {
                     return val.toFixed ? Number(val.toFixed(3)) : val;})}
                   </p>
                 </div>
+                <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Click Submit </label>
+                <div>
+                  <label style={{whiteSpace:'pre-wrap', color:'crimson', fontSize:'25px'}}>{'\n'}Results:{'\n'}</label>
+
+                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Land Use Truth: {drrResponse.data.land_use_truth}{'\n'}</p>
+                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Land Use Prediction: {drrResponse.data.land_use_pred}{'\n'}</p>
+                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Prediction: {drrResponse.data.population_pred}{'\n'}</p>
+                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Truth: {drrResponse.data.population_truth}{'\n'}{'\n'}</p>
+                 
+                </div>
               </InputForm>
-            }
+              
+          }
           
           {// Deep Region Representation response display
             //drrResponse && 
