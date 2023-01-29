@@ -14,13 +14,21 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [kValue, setKValue] = useState(1);
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
     const latlngs = mapShapes.latlngs;
-    const query = {latlngs}
-    //console.log(query);
+    console.log(latlngs);
+    // Building the query
+    const query = {"region": {"lat": Math.round(latlngs[1]["lat"]*1000)/1000, 
+                         "lng":  Math.round(latlngs[1]["lng"]*1000)/1000, 
+                         "h": Math.abs(Math.round((latlngs[1]["lat"] - latlngs[0]["lat"])*1000)/1000),
+                         "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
+    
+  
+    //const query = {latlngs}
+
+    console.log(query);
     fetch('http://localhost:8000/DRR')
       .then(res =>{
         return res.json()
@@ -80,7 +88,7 @@ function DeepRegionRepresentationPage() {
           }
 
         <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} 
-        page={'Region Search'} kValue={kValue} setKValue={setKValue}/>
+        page={'Region Search'} />
 
       </div>
         
