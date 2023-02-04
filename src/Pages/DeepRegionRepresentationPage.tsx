@@ -30,7 +30,7 @@ function DeepRegionRepresentationPage() {
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
     
-    if (mapShapes.id == ''){
+    if (mapShapes.id === ''){
       alert('Please draw a shape');
       return;
     }
@@ -46,19 +46,24 @@ function DeepRegionRepresentationPage() {
                          "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
 
     console.log(query);
-    fetch('http://localhost:8000/DRR')
+    //fetch('http://localhost:8000/DRR400')
+    fetch('http://localhost:8000/DRR200')
       .then(res =>{
         return res.json()
       })
       .then(data =>{
         console.log(data);
-        fetch('http://localhost:8000/DRR')
-        .then(res =>{
-          return res.json()
-        })
-        .then(data =>{
-          setDrrResponse(data[0]);
-        })
+        
+        if(data[0]["result"]["stat"] === 400){
+          alert(data[0]["result"]["remark"]);
+          return;
+        }
+        
+        if(data[0]["result"]["stat"] === 200){
+          alert(data[0]["result"]["remark"])
+        }
+        setDrrResponse(data[0]);
+    
       })
   };
 
@@ -116,7 +121,7 @@ function DeepRegionRepresentationPage() {
 
           }
 
-        <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} 
+        <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
         page={'Region Search'} />
 
       </div>

@@ -44,6 +44,18 @@ const Map = (props:any) => {
     const _onEdited = (e:any) => {
       const values = Object.keys(e.layers._layers).map(key => e.layers._layers[key]);
       props.setMapShapes({id:props.mapShapes.id, latlngs: values[0].getLatLngs()[0]});
+       props.setDrrResponse({ "result":{
+        "stat":400,
+        "remark":null
+      },
+
+        "data":{
+          "land_use_truth":null,
+          "land_use_pred":null,
+          "population_truth":null,
+          "population_pred":null
+        } 
+      })
     };
     
 
@@ -54,6 +66,18 @@ const Map = (props:any) => {
       // }
       SetDisplayDrawTools(true);
       props.setMapShapes({id:'', latlngs: ''});
+      props.setDrrResponse({ "result":{
+        "stat":400,
+        "remark":null
+      },
+
+        "data":{
+          "land_use_truth":null,
+          "land_use_pred":null,
+          "population_truth":null,
+          "population_pred":null
+        } 
+      })
     };
 
     return (

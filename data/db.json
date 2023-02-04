@@ -30,7 +30,7 @@
         }
     ],
 
-    "DRR":[
+    "DRR200":[
         {
             "result":{
                 "stat":200,
@@ -42,6 +42,23 @@
                 "land_use_pred":[0.4,0.1,0.1,0.2,0.2],
                 "population_truth":2000,
                 "population_pred":1500
+            }
+        }
+    ],
+
+    "DRR400":[
+
+        {
+            "result":{
+                "stat":400,
+                "remark":"Fail: Query region is too small!"
+            },
+            
+            "data":{
+                "land_use_truth":[],
+                "land_use_pred":[],
+                "population_truth":0,
+                "population_pred":0
             }
         }
     ]
