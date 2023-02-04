@@ -29,6 +29,13 @@ function DeepRegionRepresentationPage() {
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
+    
+    if (mapShapes.id == ''){
+      alert('Please draw a shape');
+      return;
+    }
+    
+
     const latlngs = mapShapes.latlngs;
     console.log(latlngs);
 
