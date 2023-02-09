@@ -103,11 +103,12 @@ function DeepRegionRepresentationPage() {
               <div>
                 <PieChart 
                   radius={20}
+                  lineWidth={60}
                   center={[30, 30]}
-                  viewBoxSize={[80,50]}
+                  viewBoxSize={[80,60]}
                   totalValue={1}
                   label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
-                  labelPosition={90}
+                  labelPosition={100}
                   labelStyle={{
                     fontSize: "3px",
                     fontWeight: "800",
@@ -129,11 +130,12 @@ function DeepRegionRepresentationPage() {
               <div>
                 <PieChart 
                   radius={20}
+                  lineWidth={60}
                   center={[30, 30]}
-                  viewBoxSize={[80,50]}
+                  viewBoxSize={[80,60]}
                   totalValue={1}
                   label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
-                  labelPosition={90}
+                  labelPosition={100}
                   labelStyle={{
                     fontSize: "3px",
                     fontWeight: "800",
