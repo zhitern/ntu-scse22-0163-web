@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Map from '../Components/Map';
 import InputForm from '../Components/InputForm';
+import { PieChart } from 'react-minimal-pie-chart';
 
 function DeepRegionRepresentationPage() {
 
@@ -74,30 +75,89 @@ function DeepRegionRepresentationPage() {
 
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
-          { // Deep Region Search form
-              <InputForm
-                onSubmit={handleSubmitDRR}
-                >
-                <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
-                <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape:{'\n'}{'\n'}</label>
-                <div style={{maxWidth: '100px'}}>
-                  <p>{ JSON.stringify(mapShapes,function(key, val) {
-                    return val.toFixed ? Number(val.toFixed(3)) : val;})}
-                  </p>
-                </div>
-                <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Click Submit </label>
-                <div>
-                  <label style={{whiteSpace:'pre-wrap', color:'crimson', fontSize:'25px'}}>{'\n'}Results:{'\n'}</label>
 
-                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Land Use Truth: {drrResponse.data.land_use_truth}{'\n'}</p>
-                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Land Use Prediction: {drrResponse.data.land_use_pred}{'\n'}</p>
-                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Prediction: {drrResponse.data.population_pred}{'\n'}</p>
-                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Truth: {drrResponse.data.population_truth}{'\n'}{'\n'}</p>
-                 
-                </div>
-              </InputForm>
+        <div style={{display: 'flex', flexDirection:'column'}}>
+          <div>
+            <InputForm
+              onSubmit={handleSubmitDRR}
+              >
+              <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
+              <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape:{'\n'}{'\n'}</label>
+              <div style={{maxWidth: '100px'}}>
+                <p>{ JSON.stringify(mapShapes,function(key, val) {
+                  return val.toFixed ? Number(val.toFixed(3)) : val;})}
+                </p>
+              </div>
+              <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Click Submit </label>
+
               
-          }
+            </InputForm>
+          </div>
+          
+          <div>
+            <label style={{whiteSpace:'pre-wrap', color:'crimson', fontSize:'35px'}}>{'\n'}Results:{'\n'}</label>
+
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px'}}>{'\n'}Land Use Truth:</p>
+            
+            {drrResponse.result.stat === 200 && 
+              <div>
+                <PieChart 
+                  radius={20}
+                  center={[30, 30]}
+                  viewBoxSize={[80,50]}
+                  totalValue={1}
+                  label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
+                  labelPosition={90}
+                  labelStyle={{
+                    fontSize: "3px",
+                    fontWeight: "800",
+                  }}
+                  data={[
+                    { title: 'Residential', value: drrResponse.data.land_use_truth[0], color: 'red' },
+                    { title: 'Commercial', value: drrResponse.data.land_use_truth[1], color: 'blue' },
+                    { title: 'Industrial', value: drrResponse.data.land_use_truth[2], color: 'yellow' },
+                    { title: 'Open Space', value: drrResponse.data.land_use_truth[3], color: 'green' },
+                    { title: 'Others', value: drrResponse.data.land_use_truth[4], color: 'purple' }
+                  ]}
+                />
+              </div>
+            }
+
+            
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px'}}>{'\n'}Land Use Prediction:{'\n'}</p>
+            {drrResponse.result.stat === 200 && 
+              <div>
+                <PieChart 
+                  radius={20}
+                  center={[30, 30]}
+                  viewBoxSize={[80,50]}
+                  totalValue={1}
+                  label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
+                  labelPosition={90}
+                  labelStyle={{
+                    fontSize: "3px",
+                    fontWeight: "800",
+                  }}
+                  data={[
+                    { title: 'Residential', value: drrResponse.data.land_use_pred[0], color: 'red' },
+                    { title: 'Commercial', value: drrResponse.data.land_use_pred[1], color: 'blue' },
+                    { title: 'Industrial', value: drrResponse.data.land_use_pred[2], color: 'yellow' },
+                    { title: 'Open Space', value: drrResponse.data.land_use_pred[3], color: 'green' },
+                    { title: 'Others', value: drrResponse.data.land_use_pred[4], color: 'purple' }
+                  ]}
+                />
+              </div>
+            }
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px'}}>{'\n'}Population Prediction: {drrResponse.data.population_pred} people/kilometer square{'\n'}</p>
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px'}}>{'\n'}Population Truth: {drrResponse.data.population_truth} people/kilometer square{'\n'}{'\n'}</p>
+            
+          </div>
+        </div>
+        
+        
+              
+              
+          
           
           {// Deep Region Representation response display
             //drrResponse && 
@@ -124,7 +184,7 @@ function DeepRegionRepresentationPage() {
         <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
         page={'Region Search'} />
 
-      </div>
+      </div>  
         
     </div> 
   );
