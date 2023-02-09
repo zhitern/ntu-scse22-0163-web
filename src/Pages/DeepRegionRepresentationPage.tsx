@@ -84,7 +84,7 @@ function DeepRegionRepresentationPage() {
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
               <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape:{'\n'}{'\n'}</label>
               <div style={{maxWidth: '100px'}}>
-                <p>{ JSON.stringify(mapShapes,function(key, val) {
+                <p>{ JSON.stringify(mapShapes.latlngs,function(key, val) {
                   return val.toFixed ? Number(val.toFixed(3)) : val;})}
                 </p>
               </div>
