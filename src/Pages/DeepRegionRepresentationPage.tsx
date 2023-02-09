@@ -108,7 +108,7 @@ function DeepRegionRepresentationPage() {
                   viewBoxSize={[80,60]}
                   totalValue={1}
                   label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
-                  labelPosition={100}
+                  labelPosition={95}
                   labelStyle={{
                     fontSize: "3px",
                     fontWeight: "800",
@@ -135,7 +135,7 @@ function DeepRegionRepresentationPage() {
                   viewBoxSize={[80,60]}
                   totalValue={1}
                   label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
-                  labelPosition={100}
+                  labelPosition={95}
                   labelStyle={{
                     fontSize: "3px",
                     fontWeight: "800",
