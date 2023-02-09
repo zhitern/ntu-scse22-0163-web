@@ -94,7 +94,7 @@ function DeepRegionRepresentationPage() {
             </InputForm>
           </div>
           
-          <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px'}}>
+          <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
             <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Results:{'\n'}</label>
 
             <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Land Use Truth:</p>
