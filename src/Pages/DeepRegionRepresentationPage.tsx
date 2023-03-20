@@ -14,11 +14,7 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [drrResponse, setDrrResponse] = useState({ "result":{
-                                            "stat":400,
-                                            "remark":null
-                                          },
-
+  const [drrResponse, setDrrResponse] = useState({
                                           "data":{
                                             "land_use_truth":null,
                                             "land_use_pred":null,
@@ -39,20 +35,16 @@ function DeepRegionRepresentationPage() {
                          "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
 
     console.log(query);
-    fetch('http://localhost:8000/DRR')
-      .then(res =>{
+    fetch('http://localhost:8000/DRR', {
+      method: 'POST',
+      body: JSON.stringify(query)
+    }).then(res =>{
         return res.json()
-      })
-      .then(data =>{
-        console.log(data);
-        fetch('http://localhost:8000/DRR')
-        .then(res =>{
-          return res.json()
+      }).then(data =>{
+          if (data.hasOwnProperty('data')){
+            setDrrResponse(data);
+          }
         })
-        .then(data =>{
-          setDrrResponse(data[0]);
-        })
-      })
   };
 
   return (
