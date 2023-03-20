@@ -4,7 +4,7 @@ import { EditControl } from 'react-leaflet-draw';
 import { useState } from 'react';
 
 import 'leaflet/dist/leaflet.css';
-import '../Pages/AlgoShowcasePage.css';
+import '../pages/AlgoShowcasePage.css';
 import "leaflet-draw/dist/leaflet.draw.css";
 
 import { control, Icon, LatLng, LatLngBoundsExpression, map, rectangle } from 'leaflet';
@@ -94,7 +94,8 @@ const Map = (props:any) => {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <LocateSelf/>
+            {// <LocateSelf/>}
+            }
             {props.children}
           </MapContainer>
     );

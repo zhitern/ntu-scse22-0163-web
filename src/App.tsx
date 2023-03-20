@@ -5,10 +5,10 @@ import {
   Route,
 } from "react-router-dom";
 
-import MainPage from "./Pages/MainPage"
-import DeepRegionRepresentationPage from './Pages/DeepRegionRepresentationPage';
-import RegionSearchPage from './Pages/RegionSearchPage';
-import Navbar from './Components/Navbar';
+import MainPage from "./pages/MainPage"
+import DeepRegionRepresentationPage from './pages/DeepRegionRepresentationPage';
+import RegionSearchPage from './pages/RegionSearchPage';
+import Navbar from './components/Navbar';
 
 function App() {
   return <BrowserRouter>

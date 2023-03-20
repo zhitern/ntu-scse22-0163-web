@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import Map from '../Components/Map';
-import InputForm from '../Components/InputForm';
+import Map from '../components/Map';
+import InputForm from '../components/InputForm';
 
 function DeepRegionRepresentationPage() {
   const [drrResponse, setDrrResponse] = useState(null);
