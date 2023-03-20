@@ -20,15 +20,30 @@ function RegionSearchPage() {
   function handleSubmitRS(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     const latlngs = mapShapes.latlngs;
-    const query = {kValue, latlngs}
+    const query = {
+      'kValue': kValue, 
+      'region': latlngs
+    }
+    console.log("SENDING: ");
     console.log(query);
-    fetch('http://localhost:8000/RS')
+    fetch('http://localhost:8000/RegionSearch', {
+      method: 'POST',
+      body: JSON.stringify(query)
+    })
       .then(res =>{
-        return res.json()
-      })
-      .then(data =>{
-        setRsResponse(data);
-      })
+        console.log("Received:")
+        console.log(res)
+        if (res['status'] == 200){
+          res.json().then(data =>{
+            if (data.hasOwnProperty('data')){
+              setRsResponse(data['data']);
+            }
+            else{
+              // no response found, popup notify error?
+            }
+          })
+        }
+      }).catch(error => {console.log(error)});
   };
 
   return (
@@ -59,7 +74,7 @@ function RegionSearchPage() {
         <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag}
         page={'Region Search'} kValue={kValue} setKValue={setKValue}>
           {// Region Search response display
-            rsResponse && rsResponse.map((points: { latlngs: LatLngBoundsExpression; id: React.Key | null | undefined; }) =>(
+            rsResponse && Array.isArray(rsResponse) && rsResponse.map((points: { latlngs: LatLngBoundsExpression; id: React.Key | null | undefined; }) =>(
               <Rectangle bounds={points.latlngs} pathOptions={limeOptions} key={points.id} />
             ))
           }
