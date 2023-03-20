@@ -4,8 +4,13 @@ import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 
 function DeepRegionRepresentationPage() {
+  interface MapShape {
+    id: string;
+    latlngs: { lat: number; lng: number }[];
+  }
+  
 
-  const[mapShapes, setMapShapes] = useState({id:'', latlngs:''});
+  const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
   const[drawFlag, setDrawFlag] = useState({ rectangle:true,
                                             polygon:true,
@@ -72,7 +77,7 @@ function DeepRegionRepresentationPage() {
                   <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Land Use Truth: {drrResponse.data.land_use_truth}{'\n'}</p>
                   <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Land Use Prediction: {drrResponse.data.land_use_pred}{'\n'}</p>
                   <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Prediction: {drrResponse.data.population_pred}{'\n'}</p>
-                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Truth: {drrResponse.data.population_truth}{'\n'}{'\n'}</p>
+                  <p style={{whiteSpace:'pre-wrap'}}>{'\n'}Population Truth: {drrResponse.data.population_truth}</p>
                  
                 </div>
               </InputForm>

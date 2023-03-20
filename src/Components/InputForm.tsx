@@ -7,6 +7,8 @@ const InputForm = (props: any) => {
               onSubmit={props.onSubmit}
               style={{background: 'lightgray', display: 'flex', borderRadius: '15px', flexDirection:'column', padding: '10px'}}>
                 {props.children}
+                <br />
+                <br />
                 <input type="submit" value="Submit" />
             </form>
     );

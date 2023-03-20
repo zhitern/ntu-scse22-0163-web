@@ -56,13 +56,16 @@ function RegionSearchPage() {
           <InputForm 
           onSubmit={handleSubmitRS}
           >
-          <label>Step 1: Enter K value </label>
+          <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>Step 1: Enter K value </label>
+          <br />
           <input type="number"
                 required
                 value={kValue}
                 onChange = {(e) => setKValue(parseInt(e.target.value))}
           />
-          <label>Step 2: Draw a rectangle on the map</label>
+          <br />
+          <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>Step 2: Draw a rectangle on the map</label>
+          <br />
           <div style={{maxWidth: '100px'}}>
             <p>
               {JSON.stringify(mapShapes,function(key, val) {
@@ -70,7 +73,7 @@ function RegionSearchPage() {
             </p>
           </div>
         </InputForm>
-
+        
         <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag}
         page={'Region Search'} kValue={kValue} setKValue={setKValue}>
           {// Region Search response display
