@@ -9,7 +9,6 @@ function DeepRegionRepresentationPage() {
     latlngs: { lat: number; lng: number }[];
   }
   
-
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
   const[drawFlag, setDrawFlag] = useState({ rectangle:true,
