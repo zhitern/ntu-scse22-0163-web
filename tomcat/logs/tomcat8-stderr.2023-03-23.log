@@ -1,0 +1,45 @@
+
+2023-03-23 11:04:33 Apache Commons Daemon procrun stderr initialized.
+23-Mar-2023 11:04:34.102 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/8.5.87
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 27 2023 19:32:33 UTC
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 8.5.87.0
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-19
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           19.0.2+7-44
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\temp
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\conf\logging.properties
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: exit
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: abort
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms128m
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx256m
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [{4}].
+23-Mar-2023 11:04:34.112 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+23-Mar-2023 11:04:34.128 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+23-Mar-2023 11:04:34.160 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+23-Mar-2023 11:04:34.181 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 520 ms
+23-Mar-2023 11:04:34.223 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+23-Mar-2023 11:04:34.223 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/8.5.87]
+23-Mar-2023 11:04:34.231 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\docs]
+23-Mar-2023 11:04:34.483 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\docs] has finished in [252] ms
+23-Mar-2023 11:04:34.483 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\examples]
+23-Mar-2023 11:04:34.784 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\examples] has finished in [301] ms
+23-Mar-2023 11:04:34.784 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\host-manager]
+23-Mar-2023 11:04:34.811 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\host-manager] has finished in [27] ms
+23-Mar-2023 11:04:34.811 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\manager]
+23-Mar-2023 11:04:34.831 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\manager] has finished in [20] ms
+23-Mar-2023 11:04:34.831 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\ROOT]
+23-Mar-2023 11:04:34.856 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\65877\NTU\FYP\ntu-scse22-0163-web\tomcat\webapps\ROOT] has finished in [25] ms
+23-Mar-2023 11:04:34.861 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+23-Mar-2023 11:04:34.891 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 717 ms
