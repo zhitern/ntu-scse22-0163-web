@@ -1,6 +1,11 @@
 def Run(input):
     
     return {
+            "result":{
+                "stat":200,
+                "remark":"Success"
+            },
+
             "data":{
                 "land_use_truth":[0.4,0.1,0.1,0.2,0.2],
                 "land_use_pred":[0.4,0.1,0.1,0.2,0.2],
