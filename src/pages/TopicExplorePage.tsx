@@ -80,7 +80,7 @@ function DeepRegionRepresentationPage() {
   return (
     <div style={{minHeight: '100vh'}}>
         
-      <div className="algoStartTitle">Deep Region Representation</div>
+      <div className="algoStartTitle">Topic Exploration</div>
 
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
@@ -104,93 +104,9 @@ function DeepRegionRepresentationPage() {
           </div>
           
           <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
-            <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Results:{'\n'}</label>
-
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Land Use Truth:</p>
-            
-            {drrResponse.result.stat === 200 && 
-              <div>
-                <PieChart 
-                  radius={20}
-                  lineWidth={60}
-                  center={[30, 30]}
-                  viewBoxSize={[80,60]}
-                  totalValue={1}
-                  label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
-                  labelPosition={95}
-                  labelStyle={{
-                    fontSize: "3px",
-                    fontWeight: "800",
-                  }}
-                  data={[
-                    { title: 'Residential', value: drrResponse.data.land_use_truth[0], color: 'red' },
-                    { title: 'Commercial', value: drrResponse.data.land_use_truth[1], color: 'blue' },
-                    { title: 'Industrial', value: drrResponse.data.land_use_truth[2], color: 'yellow' },
-                    { title: 'Open Space', value: drrResponse.data.land_use_truth[3], color: 'green' },
-                    { title: 'Others', value: drrResponse.data.land_use_truth[4], color: 'purple' }
-                  ]}
-                />
-              </div>
-            }
-
-            
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Land Use Prediction:{'\n'}</p>
-            {drrResponse.result.stat === 200 && 
-              <div>
-                <PieChart 
-                  radius={20}
-                  lineWidth={60}
-                  center={[30, 30]}
-                  viewBoxSize={[80,60]}
-                  totalValue={1}
-                  label={(data) => data.dataEntry.title +': '+ data.dataEntry.value * 100+ '%'}
-                  labelPosition={95}
-                  labelStyle={{
-                    fontSize: "3px",
-                    fontWeight: "800",
-                  }}
-                  data={[
-                    { title: 'Residential', value: drrResponse.data.land_use_pred[0], color: 'red' },
-                    { title: 'Commercial', value: drrResponse.data.land_use_pred[1], color: 'blue' },
-                    { title: 'Industrial', value: drrResponse.data.land_use_pred[2], color: 'yellow' },
-                    { title: 'Open Space', value: drrResponse.data.land_use_pred[3], color: 'green' },
-                    { title: 'Others', value: drrResponse.data.land_use_pred[4], color: 'purple' }
-                  ]}
-                />
-              </div>
-            }
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Prediction: {drrResponse.data.population_pred} people/kilometer square{'\n'}</p>
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Truth: {drrResponse.data.population_truth} people/kilometer square{'\n'}{'\n'}</p>
-            
+            <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Results:{'\n'}</label> 
           </div>
         </div>
-        
-        
-              
-              
-          
-          
-          {// Deep Region Representation response display
-            //drrResponse && 
-            // drrResponse.map((stat: any) => (
-            //   <p key={stat.id}>{stat.id}: {stat.value}</p>
-            // ))
-
-            //have a map of default color scheme
-            //defaultDir = (0, 1) - default reference axis
-            //center = use average position of all points of polygon as center
-            //add to polygon list, intersection point between line(center-default) and line (polygon[0]-polygon[-1])
-            //find angle between each point of polygon and line
-            //  use dot product
-            //find angle needed for each section of stats
-            //  use dot product
-            // Loop
-            //  find the 2 polygons this angle is between, prevPoly and nextPoly
-            //  find intersection point between line(center-pie angle) and line(prevPoly-nextPoly)
-            //  use prevPoly, [all poly between prevPoly and currPoly], currPoly, and center, to form a poly with specific color representing one stats
-            //  prevPoly = currPoly
-
-          }
 
         <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
         page={'Region Search'} />
