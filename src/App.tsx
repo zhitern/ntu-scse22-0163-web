@@ -8,8 +8,8 @@ import {
 import MainPage from "./pages/MainPage"
 import DeepRegionRepresentationPage from './pages/DeepRegionRepresentationPage';
 import RegionSearchPage from './pages/RegionSearchPage';
-import TopicsExplorationPage from './pages/TopicsExplorationPage';
 import TempoTestPage from './pages/TempoTestPage';
+import TempoTestPage2 from './pages/TopicExplorePage';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -22,10 +22,10 @@ function App() {
 
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route path="/TempoTestPage" element={<TopicsExplorationPage />} />
+      <Route path="/TempoTestPage" element={<TempoTestPage />} />
       <Route path="/DeepRegionRepresentationPage" element={<DeepRegionRepresentationPage />} />
       <Route path="/RegionSearchPage" element={<RegionSearchPage />} />
-      <Route path="/TopicsExlporationPage" element={<TopicsExplorationPage />} />
+      <Route path="/TempoTestPage2" element={<TempoTestPage2 />} />
     </Routes>
   </BrowserRouter>
 }
