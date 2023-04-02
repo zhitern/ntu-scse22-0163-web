@@ -53,7 +53,7 @@ function DeepRegionRepresentationPage() {
                          "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
 
     console.log(query);
-    fetch('http://localhost:8000/DRR', {
+    fetch('http://localhost:8000/TopicExploration', {
       method: 'POST',
       body: JSON.stringify(query)
     }).then(res =>{
@@ -61,7 +61,7 @@ function DeepRegionRepresentationPage() {
       }).then(data =>{
         console.log(data);
         
-        if(data["result"]["stat"] === 400){
+        /*if(data["result"]["stat"] === 400){
           alert(data["result"]["remark"]);
           return;
         }
@@ -73,7 +73,7 @@ function DeepRegionRepresentationPage() {
         if (data.hasOwnProperty('data')){
           setDrrResponse(data);
           setDrrResponseLoaded(true);
-        }
+        }*/
         })
   };
 
