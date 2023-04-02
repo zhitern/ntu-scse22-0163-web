@@ -19,17 +19,28 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [drrResponse, setDrrResponse] = useState({
-                                          "data":{
-                                            "land_use_truth":null,
-                                            "land_use_pred":null,
-                                            "population_truth":null,
-                                            "population_pred":null
-                                          } 
-                                        })
+  const [drrResponse, setDrrResponse] = useState({ "result":{
+                                                    "stat":400,
+                                                    "remark":null
+                                                  },
+
+                                                  "data":{
+                                                    "land_use_truth":null,
+                                                    "land_use_pred":null,
+                                                    "population_truth":null,
+                                                    "population_pred":null
+                                                  } 
+                                                })
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
+
+    //input validation: is shape drawn?
+    if (mapShapes.id === ''){
+      alert('Please draw a shape');
+      return;
+    }
+
     const latlngs = mapShapes.latlngs;
     console.log(latlngs);
 
@@ -46,9 +57,20 @@ function DeepRegionRepresentationPage() {
     }).then(res =>{
         return res.json()
       }).then(data =>{
-          if (data.hasOwnProperty('data')){
-            setDrrResponse(data);
-          }
+        console.log(data);
+        
+        if(data["result"]["stat"] === 400){
+          alert(data["result"]["remark"]);
+          return;
+        }
+
+        if(data["result"]["stat"] === 200){
+          alert(data["result"]["remark"])
+        }
+
+        if (data.hasOwnProperty('data')){
+          setDrrResponse(data);
+        }
         })
   };
 
