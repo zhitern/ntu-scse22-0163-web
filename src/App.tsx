@@ -9,7 +9,7 @@ import MainPage from "./pages/MainPage"
 import DeepRegionRepresentationPage from './pages/DeepRegionRepresentationPage';
 import RegionSearchPage from './pages/RegionSearchPage';
 import TempoTestPage from './pages/TempoTestPage';
-import TempoTestPage2 from './pages/TopicExplorePage';
+import TopicExplorePage from './pages/TopicExplorePage';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <Route path="/TempoTestPage" element={<TempoTestPage />} />
       <Route path="/DeepRegionRepresentationPage" element={<DeepRegionRepresentationPage />} />
       <Route path="/RegionSearchPage" element={<RegionSearchPage />} />
-      <Route path="/TempoTestPage2" element={<TempoTestPage2 />} />
+      <Route path="/TempoTestPage2" element={<TopicExplorePage />} />
     </Routes>
   </BrowserRouter>
 }

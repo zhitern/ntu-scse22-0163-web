@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-function TempoTestPage() {
+function TopicExplorePage() {
   return (
     <div className="TempoTestPage">
       <header className="TempoTestPage-header">
@@ -23,4 +23,4 @@ function TempoTestPage() {
   );
 }
 
-export default TempoTestPage;
+export default TopicExplorePage;
