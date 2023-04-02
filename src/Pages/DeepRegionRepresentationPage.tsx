@@ -25,10 +25,10 @@ function DeepRegionRepresentationPage() {
                                                   },
 
                                                   "data":{
-                                                    "land_use_truth":null,
-                                                    "land_use_pred":null,
-                                                    "population_truth":null,
-                                                    "population_pred":null
+                                                    "land_use_truth":[],
+                                                    "land_use_pred":[],
+                                                    "population_truth":[],
+                                                    "population_pred":[]
                                                   } 
                                                 });
 
