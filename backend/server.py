@@ -17,7 +17,7 @@ class CustomHandler(http.server.BaseHTTPRequestHandler):
             response = FakeModel1.Run(message)
         elif self.path == '/DRR':
             response = FakeModel2.Run(message)
-        elif self.path == '/TopicExploration'
+        elif self.path == '/TopicExploration':
             response = 'Topic'
         else:
             self.send_response(404)
