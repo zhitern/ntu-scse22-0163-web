@@ -25,7 +25,7 @@ function App() {
       <Route path="/TempoTestPage" element={<TempoTestPage />} />
       <Route path="/DeepRegionRepresentationPage" element={<DeepRegionRepresentationPage />} />
       <Route path="/RegionSearchPage" element={<RegionSearchPage />} />
-      <Route path="/TempoTestPage2" element={<TopicExplorePage />} />
+      <Route path="/TopicExplorePage" element={<TopicExplorePage />} />
     </Routes>
   </BrowserRouter>
 }

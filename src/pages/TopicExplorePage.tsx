@@ -7,7 +7,7 @@ function TopicExplorePage() {
       <header className="TempoTestPage-header">
       <body>Tempo Page
         <br></br>
-      <Link to="/MainPage">
+      <Link to="/">
         <button>Go to MainPage</button>
       </Link>
       <br></br>
