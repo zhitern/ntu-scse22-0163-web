@@ -28,9 +28,11 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [topics, setTopics] = useState(null);
-
+  const [topics, setTopics] = useState([]);
+  const [tweets, setTweets] = useState([]);
   const [topicsLoaded, setTopicsLoaded] = useState(false);
+  const [dropDownText, setDropdownText] = useState('Select Topics');
+  let count = 1;
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
@@ -58,7 +60,8 @@ function DeepRegionRepresentationPage() {
         return res.json()
       }).then(data =>{
         console.log(data);
-        setTopics(data);
+        setTopics(data.topics);
+        setTweets(data.tweets);
         setTopicsLoaded(true);
         })
   };
@@ -91,18 +94,15 @@ function DeepRegionRepresentationPage() {
           
           <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
             <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Topics:{'\n'}</label>
-            <Dropdown onClick={()=>{console.log('dropdown clicked');
-            }}>
+            {topicsLoaded && <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
+                {dropDownText}
               </Dropdown.Toggle>
-
+              
               <Dropdown.Menu>
-                <Dropdown.Item onClick={()=>{console.log('dropdown1 clicked');}} href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item onClick={()=>{console.log('dropdown2 clicked');}} href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item onClick={()=>{console.log('dropdown3 clicked');}} href="#/action-3">Something else</Dropdown.Item>
+              {topics.map((topic: any) =>(<Dropdown.Item index = {count} key={topic.id} onClick={()=>{setDropdownText('Topic Selected')}}>{count++}</Dropdown.Item>))}
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown>}
           </div>
         </div>
 
