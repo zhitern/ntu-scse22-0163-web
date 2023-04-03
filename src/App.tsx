@@ -11,6 +11,7 @@ import RegionSearchPage from './pages/RegionSearchPage';
 import TempoTestPage from './pages/TempoTestPage';
 import TopicExplorePage from './pages/TopicExplorePage';
 import Navbar from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return <BrowserRouter>

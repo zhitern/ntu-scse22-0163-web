@@ -4,6 +4,7 @@ import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 import { Rectangle } from 'react-leaflet';
 import { LatLngBoundsExpression } from 'leaflet';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function DeepRegionRepresentationPage() {
   interface MapShape {
@@ -27,20 +28,9 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [drrResponse, setDrrResponse] = useState({ "result":{
-                                                    "stat":400,
-                                                    "remark":null
-                                                  },
+  const [topics, setTopics] = useState(null);
 
-                                                  "data":{
-                                                    "land_use_truth":[],
-                                                    "land_use_pred":[],
-                                                    "population_truth":[],
-                                                    "population_pred":[]
-                                                  } 
-                                                });
-
-  const [drrResponseLoaded, setDrrResponseLoaded] = useState(false);
+  const [topicsLoaded, setTopicsLoaded] = useState(false);
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
@@ -68,20 +58,8 @@ function DeepRegionRepresentationPage() {
         return res.json()
       }).then(data =>{
         console.log(data);
-        
-        /*if(data["result"]["stat"] === 400){
-          alert(data["result"]["remark"]);
-          return;
-        }
-
-        if(data["result"]["stat"] === 200){
-          alert(data["result"]["remark"])
-        }
-
-        if (data.hasOwnProperty('data')){
-          setDrrResponse(data);
-          setDrrResponseLoaded(true);
-        }*/
+        setTopics(data);
+        setTopicsLoaded(true);
         })
   };
 
@@ -112,11 +90,23 @@ function DeepRegionRepresentationPage() {
           </div>
           
           <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
-            <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Results:{'\n'}</label> 
+            <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Topics:{'\n'}</label>
+            <Dropdown onClick={()=>{console.log('dropdown clicked');
+            }}>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Dropdown Button
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={()=>{console.log('dropdown1 clicked');}} href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item onClick={()=>{console.log('dropdown2 clicked');}} href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item onClick={()=>{console.log('dropdown3 clicked');}} href="#/action-3">Something else</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
 
-        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
+        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setTopics}
         page={'Region Search'}> 
           <Rectangle bounds={Bounds} pathOptions={limeOptions} />
         </Map>
