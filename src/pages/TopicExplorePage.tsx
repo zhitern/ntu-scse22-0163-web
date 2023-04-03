@@ -67,24 +67,6 @@ function DeepRegionRepresentationPage() {
         })
   };
 
-  useEffect(() => {
-    //console.log(topics[0]['words'][0]);
-    
-    let top100:any = [];
-    for(let i=0; i<10; i++){
-      let top10:any = [];
-      for(let j=0; j<10; j++){
-        top10.push(topics[i]['words'][j])
-        //console.log(topics[i]['words'][j]);
-        //console.log(topics[i]['words'][j]);
-      }
-      top100.push(top10);
-    }
-    console.log(top100);
-    
-    
-  }, [topics]); 
-
   return (
     <div style={{minHeight: '100vh'}}>
         
@@ -115,7 +97,7 @@ function DeepRegionRepresentationPage() {
             <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Topics:{'\n'}</label>
             {topicsLoaded && 
               topics.map((topic:any) => (
-                topic.words.slice(0,10).map((word:any) => (<p>{word.word}</p>))))
+                topic['words'].map((word:any) => (<p>{word.word}</p>))))
             }
           </div>
         </div>
