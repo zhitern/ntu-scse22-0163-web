@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 import { Rectangle } from 'react-leaflet';
@@ -29,6 +29,7 @@ function DeepRegionRepresentationPage() {
                                             marker:false });
 
   const [topics, setTopics] = useState([]);
+  const [topicSelected, setTopicSelected] = useState(0);
   const [tweets, setTweets] = useState([]);
   const [topicsLoaded, setTopicsLoaded] = useState(false);
   const [dropDownText, setDropdownText] = useState('Select Topics');
@@ -66,6 +67,24 @@ function DeepRegionRepresentationPage() {
         })
   };
 
+  useEffect(() => {
+    //console.log(topics[0]['words'][0]);
+    
+    let top100:any = [];
+    for(let i=0; i<10; i++){
+      let top10:any = [];
+      for(let j=0; j<10; j++){
+        top10.push(topics[i]['words'][j])
+        //console.log(topics[i]['words'][j]);
+        //console.log(topics[i]['words'][j]);
+      }
+      top100.push(top10);
+    }
+    console.log(top100);
+    
+    
+  }, [topics]); 
+
   return (
     <div style={{minHeight: '100vh'}}>
         
@@ -94,15 +113,10 @@ function DeepRegionRepresentationPage() {
           
           <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
             <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Topics:{'\n'}</label>
-            {topicsLoaded && <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                {dropDownText}
-              </Dropdown.Toggle>
-              
-              <Dropdown.Menu>
-              {topics.map((topic: any) =>(<Dropdown.Item index = {count} key={topic.id} onClick={()=>{setDropdownText('Topic Selected')}}>{count++}</Dropdown.Item>))}
-              </Dropdown.Menu>
-            </Dropdown>}
+            {topicsLoaded && 
+              topics.map((topic:any) => (
+                topic.words.slice(0,10).map((word:any) => (<p>{word.word}</p>))))
+            }
           </div>
         </div>
 
