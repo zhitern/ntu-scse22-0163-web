@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 import { Rectangle } from 'react-leaflet';
+import { LatLngBoundsExpression } from 'leaflet';
 
 function DeepRegionRepresentationPage() {
   interface MapShape {
@@ -11,10 +12,11 @@ function DeepRegionRepresentationPage() {
   }
 
   const center = [-36.49993, 145.3756477];
-  const Bounds = [
-    [50.505, -29.09],
-    [52.505, 29.09],
+  const Bounds:LatLngBoundsExpression = [
+    [-33.999,140.9502954],
+    [-39.000859999999996, 149.80100000000002]
   ];
+  const limeOptions = { color: 'lime' }
   
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
@@ -116,7 +118,7 @@ function DeepRegionRepresentationPage() {
 
         <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
         page={'Region Search'}> 
-        
+          <Rectangle bounds={Bounds} pathOptions={limeOptions} />
         </Map>
 
       </div>  
