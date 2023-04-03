@@ -2,13 +2,19 @@ import React from 'react';
 import { useState } from 'react';
 import Map from '../components/Map';
 import InputForm from '../components/InputForm';
-import { PieChart } from 'react-minimal-pie-chart';
+import { Rectangle } from 'react-leaflet';
 
 function DeepRegionRepresentationPage() {
   interface MapShape {
     id: string;
     latlngs: { lat: number; lng: number }[];
   }
+
+  const center = [-36.49993, 145.3756477];
+  const Bounds = [
+    [50.505, -29.09],
+    [52.505, 29.09],
+  ];
   
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
@@ -108,8 +114,10 @@ function DeepRegionRepresentationPage() {
           </div>
         </div>
 
-        <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
-        page={'Region Search'} />
+        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
+        page={'Region Search'}> 
+        
+        </Map>
 
       </div>  
         

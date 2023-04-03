@@ -57,7 +57,7 @@ const Map = (props:any) => {
     };
 
     return (
-          <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={[1.3484815128554006, 103.68351020563715]} zoom={13} scrollWheelZoom={true}>
+          <MapContainer style={{height: 'match-parent', width: '65%', display: 'inline-block'}} center={props.center} zoom={13} scrollWheelZoom={true}>
             
             <FeatureGroup>
               {displayDrawTools && <EditControl position='topright' 

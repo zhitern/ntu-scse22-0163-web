@@ -6,6 +6,8 @@ import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 
 function RegionSearchPage() {
+  const center = [1.3484815128554006, 103.68351020563715];
+
   const [rsResponse, setRsResponse] = useState<Object | null>(null);
   const [mapShapes, setMapShapes] = useState({id:'', latlngs:''});
   const [drawFlag, setDrawFlag] = useState({ rectangle:true,
@@ -74,7 +76,7 @@ function RegionSearchPage() {
           </div>
         </InputForm>
         
-        <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag}
+        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag}
         page={'Region Search'} kValue={kValue} setKValue={setKValue}>
           {// Region Search response display
             rsResponse && Array.isArray(rsResponse) && rsResponse.map((points: { latlngs: LatLngBoundsExpression; id: React.Key | null | undefined; }) =>(

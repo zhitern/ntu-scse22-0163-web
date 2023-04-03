@@ -9,6 +9,8 @@ function DeepRegionRepresentationPage() {
     id: string;
     latlngs: { lat: number; lng: number }[];
   }
+
+  const center = [1.3484815128554006, 103.68351020563715];
   
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
@@ -192,7 +194,7 @@ function DeepRegionRepresentationPage() {
 
           }
 
-        <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
+        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
         page={'Region Search'} />
 
       </div>  
