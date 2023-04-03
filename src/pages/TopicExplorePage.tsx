@@ -16,7 +16,7 @@ function DeepRegionRepresentationPage() {
     [-33.999,140.9502954],
     [-39.000859999999996, 149.80100000000002]
   ];
-  const limeOptions = { color: 'lime' }
+  const limeOptions = { color: 'white' }
   
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
