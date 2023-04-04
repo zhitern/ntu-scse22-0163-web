@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect} from 'react';
 import Map from '../components/Map';
 import InputForm from '../components/InputForm';
-import { Rectangle } from 'react-leaflet';
+import { Marker, Popup, Rectangle } from 'react-leaflet';
 import { LatLngBoundsExpression } from 'leaflet';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -30,8 +30,9 @@ function DeepRegionRepresentationPage() {
 
   const [topics, setTopics] = useState<any[]>([]);
   const [topicSelected, setTopicSelected] = useState(0);
-  const [tweets, setTweets] = useState([]);
+  const [tweets, setTweets] = useState<any[]>([]);
   const [topicsLoaded, setTopicsLoaded] = useState(false);
+  const [tweetsLoaded, setTweetsLoaded] = useState(false);
   const [dropDownText, setDropdownText] = useState('Select Topic');
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
@@ -67,6 +68,7 @@ function DeepRegionRepresentationPage() {
         console.log(data.topics);
         setTweets(data.tweets);
         setTopicsLoaded(true);
+        setTweetsLoaded(true);
         })
   };
 
@@ -126,6 +128,13 @@ function DeepRegionRepresentationPage() {
         <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setTopics}
         page={'Region Search'}> 
           <Rectangle bounds={Bounds} pathOptions={limeOptions} />
+          {tweetsLoaded && tweets.slice(0,20).map((tweet:any) => (
+            <Marker key={tweet.id} position={[tweet.lat, tweet.lon]}>
+              <Popup>
+                {tweet.text}
+              </Popup>
+            </Marker>
+          ))}
         </Map>
 
       </div>  
