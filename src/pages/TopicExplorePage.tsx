@@ -28,12 +28,11 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [topics, setTopics] = useState([]);
+  const [topics, setTopics] = useState<any[]>([]);
   const [topicSelected, setTopicSelected] = useState(0);
   const [tweets, setTweets] = useState([]);
   const [topicsLoaded, setTopicsLoaded] = useState(false);
-  const [dropDownText, setDropdownText] = useState('Select Topics');
-  let count = 1;
+  const [dropDownText, setDropdownText] = useState('Select Topic');
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
@@ -62,11 +61,10 @@ function DeepRegionRepresentationPage() {
       }).then(data =>{
         console.log(data);
         for(let i=0; i<10; i++){
-          data.topics[i]['index'] = i
+          data.topics[i]['index'] = i+1
         }
         setTopics(data.topics);
         console.log(data.topics);
-        
         setTweets(data.tweets);
         setTopicsLoaded(true);
         })
@@ -99,10 +97,22 @@ function DeepRegionRepresentationPage() {
           </div>
           
           <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
-            <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Topics:{'\n'}</label>
+            <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Top 10 Topics:{'\n'}</label>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                {dropDownText}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                {topics.map((topic:any) => (<Dropdown.Item key={topic.index} onClick={()=>{setTopicSelected(topic.index); setDropdownText('Topic '+topic.index)}}>Topic {topic.index}</Dropdown.Item>))}
+              </Dropdown.Menu>
+            </Dropdown>
             {topicsLoaded && 
-              topics.map((topic:any) => (
-                topic['words'].map((word:any) => (<p>{word.word}</p>))))
+              /*topics.map((topic:any) => (
+                topic['words'].map((word:any) => (<p>{word.word}</p>))))*/
+              topics[topicSelected-1]?.words.map((topic:any) =>(
+                <p>{topic.word}</p>
+              ))
             }
           </div>
         </div>
