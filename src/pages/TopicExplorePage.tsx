@@ -61,7 +61,12 @@ function DeepRegionRepresentationPage() {
         return res.json()
       }).then(data =>{
         console.log(data);
+        for(let i=0; i<10; i++){
+          data.topics[i].id = i
+        }
         setTopics(data.topics);
+        console.log(data.topics);
+        
         setTweets(data.tweets);
         setTopicsLoaded(true);
         })
