@@ -30,9 +30,11 @@ function DeepRegionRepresentationPage() {
 
   const [topics, setTopics] = useState<any[]>([]);
   const [topicSelected, setTopicSelected] = useState(0);
+  const [indexSelected, setIndexSelected] = useState(0);
   const [tweets, setTweets] = useState<any[]>([]);
   const [topicsLoaded, setTopicsLoaded] = useState(false);
   const [tweetsLoaded, setTweetsLoaded] = useState(false);
+  const [tweetsByTopic, setTweetsByTopic] = useState<any[]>([]);
   const [dropDownText, setDropdownText] = useState('Select Topic');
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
@@ -72,6 +74,19 @@ function DeepRegionRepresentationPage() {
         })
   };
 
+  useEffect(() => {
+    if(topicSelected != 0){
+      console.log('topic selected:',topicSelected);
+      
+      let filteredTweets = [];
+      filteredTweets = tweets.filter(function (e) {
+        return e.topic === topicSelected;
+      });
+      console.log(filteredTweets);
+      setTweetsByTopic(filteredTweets);
+    }
+  }, [topicSelected]);
+
   return (
     <div style={{minHeight: '100vh'}}>
         
@@ -106,7 +121,7 @@ function DeepRegionRepresentationPage() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                {topics.map((topic:any) => (<Dropdown.Item key={topic.index} onClick={()=>{setTopicSelected(topic.index); setDropdownText('Topic '+topic.index)}}>Topic {topic.index}</Dropdown.Item>))}
+                {topics.map((topic:any) => (<Dropdown.Item key={topic.index} onClick={()=>{setTopicSelected(topic.id); setIndexSelected(topic.index); setDropdownText('Topic '+topic.index)}}>Topic {topic.index}</Dropdown.Item>))}
               </Dropdown.Menu>
             </Dropdown>
             <div style={{display:'flex'}}>
@@ -114,7 +129,7 @@ function DeepRegionRepresentationPage() {
               <p style={{paddingLeft:'150px', color:'blue', fontWeight:'bold'}}>count:</p>
             </div>
             {topicsLoaded && 
-              topics[topicSelected-1]?.words.map((topic:any) =>(
+              topics[indexSelected-1]?.words.map((topic:any) =>(
                 <div style={{display:'flex'}}>
                   <p>{topic.word}</p>
                   <p style={{position:'absolute', left:'250px'}}>{topic.count}</p>
@@ -128,7 +143,7 @@ function DeepRegionRepresentationPage() {
         <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setTopics}
         page={'Region Search'}> 
           <Rectangle bounds={Bounds} pathOptions={limeOptions} />
-          {tweetsLoaded && tweets.slice(0,20).map((tweet:any) => (
+          {tweetsLoaded && tweetsByTopic.map((tweet:any) => (
             <Marker key={tweet.id} position={[tweet.lat, tweet.lon]}>
               <Popup>
                 {tweet.text}
