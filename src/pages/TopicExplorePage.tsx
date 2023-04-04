@@ -3,7 +3,7 @@ import { useState, useEffect} from 'react';
 import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 import { Marker, Popup, Rectangle } from 'react-leaflet';
-import { LatLngBoundsExpression } from 'leaflet';
+import L, { LatLngBoundsExpression } from 'leaflet';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function DeepRegionRepresentationPage() {
@@ -13,6 +13,10 @@ function DeepRegionRepresentationPage() {
   }
 
   const center = [-36.49993, 145.3756477];
+  const markerIcon = new L.Icon({
+    iconUrl: require("../image/tweeterIcon.png"),
+    iconSize: [35,35]
+  });
   const Bounds:LatLngBoundsExpression = [
     [-33.999,140.9502954],
     [-39.000859999999996, 149.80100000000002]
@@ -76,13 +80,13 @@ function DeepRegionRepresentationPage() {
 
   useEffect(() => {
     if(topicSelected != 0){
-      console.log('topic selected:',topicSelected);
+      //console.log('topic selected:',topicSelected);
       
       let filteredTweets = [];
       filteredTweets = tweets.filter(function (e) {
         return e.topic === topicSelected;
       });
-      console.log(filteredTweets);
+      //console.log(filteredTweets);
       setTweetsByTopic(filteredTweets);
     }
   }, [topicSelected]);
@@ -144,7 +148,7 @@ function DeepRegionRepresentationPage() {
         page={'Region Search'}> 
           <Rectangle bounds={Bounds} pathOptions={limeOptions} />
           {tweetsLoaded && tweetsByTopic.map((tweet:any) => (
-            <Marker key={tweet.id} position={[tweet.lat, tweet.lon]}>
+            <Marker icon={markerIcon} key={tweet.id} position={[tweet.lat, tweet.lon]}>
               <Popup>
                 {tweet.text}
               </Popup>
