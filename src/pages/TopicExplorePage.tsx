@@ -62,7 +62,7 @@ function DeepRegionRepresentationPage() {
       }).then(data =>{
         console.log(data);
         for(let i=0; i<10; i++){
-          data.topics[i].id = i
+          data.topics[i]['index'] = i
         }
         setTopics(data.topics);
         console.log(data.topics);
