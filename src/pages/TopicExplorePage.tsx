@@ -130,13 +130,13 @@ function DeepRegionRepresentationPage() {
             </Dropdown>
             <div style={{display:'flex'}}>
               <p style={{color:'blue', fontWeight:'bold'}}>keyword:</p>
-              <p style={{paddingLeft:'150px', color:'blue', fontWeight:'bold'}}>count:</p>
+              <p style={{position:'absolute', left:'350px', color:'blue', fontWeight:'bold'}}>count:</p>
             </div>
             {topicsLoaded && 
               topics[indexSelected-1]?.words.map((topic:any) =>(
                 <div style={{display:'flex'}}>
                   <p>{topic.word}</p>
-                  <p style={{position:'absolute', left:'250px'}}>{topic.count}</p>
+                  <p style={{position:'absolute', left:'350px'}}>{topic.count}</p>
                 </div>
                 
               ))
