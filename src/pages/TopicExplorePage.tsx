@@ -107,11 +107,17 @@ function DeepRegionRepresentationPage() {
                 {topics.map((topic:any) => (<Dropdown.Item key={topic.index} onClick={()=>{setTopicSelected(topic.index); setDropdownText('Topic '+topic.index)}}>Topic {topic.index}</Dropdown.Item>))}
               </Dropdown.Menu>
             </Dropdown>
+            <div style={{display:'flex'}}>
+              <p style={{color:'blue', fontWeight:'bold'}}>keyword:</p>
+              <p style={{paddingLeft:'150px', color:'blue', fontWeight:'bold'}}>count:</p>
+            </div>
             {topicsLoaded && 
-              /*topics.map((topic:any) => (
-                topic['words'].map((word:any) => (<p>{word.word}</p>))))*/
               topics[topicSelected-1]?.words.map((topic:any) =>(
-                <p>{topic.word}</p>
+                <div style={{display:'flex'}}>
+                  <p>{topic.word}</p>
+                  <p style={{position:'absolute', left:'250px'}}>{topic.count}</p>
+                </div>
+                
               ))
             }
           </div>
