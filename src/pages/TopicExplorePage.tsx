@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
-import Map from '../components/Map';
-import InputForm from '../components/InputForm';
 import { Marker, Popup, Rectangle } from 'react-leaflet';
 import L, { LatLngBoundsExpression } from 'leaflet';
 import Dropdown from 'react-bootstrap/Dropdown';
+
+import Map from '../components/Map';
+import InputForm from '../components/InputForm';
+import DateRangerPicker from '../components/DateRangePicker';
 
 function DeepRegionRepresentationPage() {
   interface MapShape {
@@ -111,7 +113,9 @@ function DeepRegionRepresentationPage() {
                   return val.toFixed ? Number(val.toFixed(3)) : val;})}
                 </p>
               </div>
-              <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Click submit to see the results</label>
+              <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Enter the range of date</label>
+              <DateRangerPicker />
+              <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 3: Click submit to see the results</label>
 
               
             </InputForm>
