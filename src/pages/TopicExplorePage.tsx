@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Marker, Popup, Rectangle } from 'react-leaflet';
 import L, { LatLngBoundsExpression } from 'leaflet';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -14,18 +14,19 @@ function DeepRegionRepresentationPage() {
     latlngs: { lat: number; lng: number }[];
   }
 
+  const mapRef = useRef<any>(null);
   const center = [-36.49993, 145.3756477];
   const markerIcon = new L.Icon({
     iconUrl: require("../image/tweeterIcon.png"),
     iconSize: [35,35]
   });
-  const Bounds:LatLngBoundsExpression = [
-    [-33.999,140.9502954],
-    [-39.000859999999996, 149.80100000000002]
+  const bounds:LatLngBoundsExpression = [
+    [-33.999,140.9502954], // top left (y, x)
+    [-39.000859999999996, 149.80100000000002] // btm right
   ];
   const limeOptions = { color: 'silver' }
   
-  const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
+  const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []}); //latlngs: [topLeft, topRight, btmRight, btmLeft]
 
   const[drawFlag, setDrawFlag] = useState({ rectangle:true,
                                             polygon:false,
@@ -80,6 +81,19 @@ function DeepRegionRepresentationPage() {
         })
   };
 
+  useEffect(() => {
+    if (mapShapes.latlngs.length <= 0){
+      return
+    }
+    const drawnShapeTopLeft = mapShapes.latlngs[0]; // .lat, .lng
+    const drawnShapeBtmRight = mapShapes.latlngs[2];
+    const boundTopLeft = bounds[0]; // [y, x]
+    const boundBtmRight = bounds[1];
+    if (drawnShapeTopLeft.lng < boundTopLeft[1] || drawnShapeTopLeft.lat > boundTopLeft[0] ||
+      drawnShapeBtmRight.lng > boundBtmRight[1] || drawnShapeBtmRight.lat < boundBtmRight[0]) {
+        mapRef.current?.ClearShapes();
+  }
+  }, [mapShapes]);
   useEffect(() => {
     if(topicSelected != 0){
       //console.log('topic selected:',topicSelected);
@@ -148,9 +162,17 @@ function DeepRegionRepresentationPage() {
           </div>
         </div>
 
-        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setTopics}
-        page={'Region Search'}> 
-          <Rectangle bounds={Bounds} pathOptions={limeOptions} />
+        <Map 
+          ref={mapRef}
+          center = {center} 
+          mapShapes={mapShapes} 
+          setMapShapes={setMapShapes} 
+          drawFlag={drawFlag} 
+          setDrawFlag={setDrawFlag} 
+          setDrrResponse={setTopics}
+          page={'Region Search'}
+        >
+          <Rectangle bounds={bounds} pathOptions={limeOptions} />
           {tweetsLoaded && tweetsByTopic.map((tweet:any) => (
             <Marker icon={markerIcon} key={tweet.id} position={[tweet.lat, tweet.lon]}>
               <Popup>
