@@ -6,11 +6,10 @@ import dayjs from 'dayjs'
 
 const { RangePicker } = DatePicker;
 
-type RangeValue = [Dayjs | null, Dayjs | null] | null;
+export type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
 const DateRangerPicker = (props: any) => {
     const [dates, setDates] = useState<RangeValue>(null);
-    const [value, setValue] = useState<RangeValue>(null);
     const [dateMin, setDateMin] = useState<Dayjs>(dayjs('2015-01-01', "YYYY-MM-DD"));
     const [dateMax, setDateMax] = useState<Dayjs>(dayjs('2015-12-31', "YYYY-MM-DD"));
     const [halfRangeDate, setHalfRangeDate] = useState<Dayjs>(dayjs());
@@ -46,8 +45,7 @@ const DateRangerPicker = (props: any) => {
             defaultPickerValue={[dayjs('2015'), dayjs('2015')]}
             //value={dates || value}
             disabledDate={disabledDate}
-            //onCalendarChange={(val) => setDates(val)}
-            onChange={(val) => {setValue(val); console.log(val)}}
+            onChange={(val) => {props.setDateRangeInput(val)}}
             //onOpenChange={onOpenChange}
             />
     </div>

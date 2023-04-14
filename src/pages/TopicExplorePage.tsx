@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 import DateRangerPicker from '../components/DateRangePicker';
+import { RangeValue } from '../components/DateRangePicker';
 
 function DeepRegionRepresentationPage() {
   interface MapShape {
@@ -26,6 +27,7 @@ function DeepRegionRepresentationPage() {
   ];
   const limeOptions = { color: 'silver' }
   
+  const[dateRangeInput, setDateRangeInput] = useState<RangeValue>();
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []}); //latlngs: [topLeft, topRight, btmRight, btmLeft]
 
   const[drawFlag, setDrawFlag] = useState({ rectangle:true,
@@ -52,15 +54,20 @@ function DeepRegionRepresentationPage() {
       alert('Please draw a shape');
       return;
     }
+    if (dateRangeInput == null)
+    {
+      alert('Please input the date range');
+      return;
+    }
 
     const latlngs = mapShapes.latlngs;
     console.log(latlngs);
 
     // Building the query
-    const query = {"region": {"lat": Math.round(latlngs[1]["lat"]*1000)/1000, 
-                         "lng":  Math.round(latlngs[1]["lng"]*1000)/1000, 
-                         "h": Math.abs(Math.round((latlngs[1]["lat"] - latlngs[0]["lat"])*1000)/1000),
-                         "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
+    const query = {
+      "region": [[mapShapes.latlngs[3].lat, mapShapes.latlngs[3].lng], [mapShapes.latlngs[1].lat, mapShapes.latlngs[1].lng]],
+      "dateRange": [dateRangeInput[0]?.format('YYYY-MM-DD'), dateRangeInput[1]?.format('YYYY-MM-DD')]
+    };
 
     console.log(query);
     fetch('http://localhost:8000/TopicExploration', {
@@ -91,6 +98,7 @@ function DeepRegionRepresentationPage() {
     const boundBtmRight = bounds[1];
     if (drawnShapeTopLeft.lng < boundTopLeft[1] || drawnShapeTopLeft.lat > boundTopLeft[0] ||
       drawnShapeBtmRight.lng > boundBtmRight[1] || drawnShapeBtmRight.lat < boundBtmRight[0]) {
+        alert("Drawn shape out of bounds, please re-draw")
         mapRef.current?.ClearShapes();
   }
   }, [mapShapes]);
@@ -128,7 +136,7 @@ function DeepRegionRepresentationPage() {
                 </p>
               </div>
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Enter the range of date</label>
-              <DateRangerPicker />
+              <DateRangerPicker setDateRangeInput={setDateRangeInput} />
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 3: Click submit to see the results</label>
 
               
