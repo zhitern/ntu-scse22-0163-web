@@ -49,6 +49,7 @@ function DeepRegionRepresentationPage() {
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
     setTopics([]);
+    setTweetsByTopic([]);
     setTopicSelected(0);
     setIndexSelected(0);
     setDropdownText('Select Topic');
