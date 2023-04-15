@@ -8,7 +8,10 @@ import {
 import MainPage from "./pages/MainPage"
 import DeepRegionRepresentationPage from './pages/DeepRegionRepresentationPage';
 import RegionSearchPage from './pages/RegionSearchPage';
+import TempoTestPage from './pages/TempoTestPage';
+import TopicExplorePage from './pages/TopicExplorePage';
 import Navbar from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return <BrowserRouter>
@@ -20,8 +23,10 @@ function App() {
 
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route path="DeepRegionRepresentationPage" element={<DeepRegionRepresentationPage />} />
-      <Route path="RegionSearchPage" element={<RegionSearchPage />} />
+      <Route path="/TempoTestPage" element={<TempoTestPage />} />
+      <Route path="/DeepRegionRepresentationPage" element={<DeepRegionRepresentationPage />} />
+      <Route path="/RegionSearchPage" element={<RegionSearchPage />} />
+      <Route path="/TopicExplorePage" element={<TopicExplorePage />} />
     </Routes>
   </BrowserRouter>
 }

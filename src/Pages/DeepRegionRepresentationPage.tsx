@@ -9,6 +9,8 @@ function DeepRegionRepresentationPage() {
     id: string;
     latlngs: { lat: number; lng: number }[];
   }
+
+  const center = [1.3484815128554006, 103.68351020563715];
   
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
 
@@ -91,11 +93,14 @@ function DeepRegionRepresentationPage() {
               onSubmit={handleSubmitDRR}
               >
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
-              <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape:{'\n'}{'\n'}</label>
+              <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape (sw, nw, ne, se):{'\n'}{'\n'}</label>
               <div style={{maxWidth: '100px'}}>
-                <p>{ JSON.stringify(mapShapes.latlngs,function(key, val) {
-                  return val.toFixed ? Number(val.toFixed(3)) : val;})}
-                </p>
+                {mapShapes.id!='' && mapShapes.latlngs.map((latlng: any)=>(
+                  <div style={{display:'flex'}}>
+                    <p style={{marginRight:'5px'}}>{latlng.lat.toFixed(3)},</p>
+                    <p>{latlng.lng.toFixed(3)}</p>
+                  </div>
+                ))}
               </div>
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>{'\n'}- Step 2: Click submit to see the results</label>
 
@@ -192,7 +197,7 @@ function DeepRegionRepresentationPage() {
 
           }
 
-        <Map mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
+        <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag} setDrrResponse={setDrrResponse}
         page={'Region Search'} />
 
       </div>  

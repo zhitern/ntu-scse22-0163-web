@@ -157,6 +157,7 @@
   width:fit-content;
   height: fit-content;
   border-radius: 20px;
+  margin-right: 10px ;
   /* Buttons */
   
   font-family: 'Outfit';
@@ -175,4 +176,13 @@
 
 .algoSearchBtn:hover {
   color: #f50000;
+}
+
+.algoScreenshot {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 500px;
+  margin: 10px;
+
 }
