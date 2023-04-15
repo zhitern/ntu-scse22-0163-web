@@ -48,7 +48,10 @@ function DeepRegionRepresentationPage() {
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
-    setTweetsByTopic([]);
+    setTopics([]);
+    setTopicSelected(0);
+    setIndexSelected(0);
+    setDropdownText('Select Topic');
 
     //input validation: is shape drawn?
     if (mapShapes.id === ''){
@@ -79,9 +82,12 @@ function DeepRegionRepresentationPage() {
       }).then(data =>{
         console.log(data);
         if(data['topics'][0]['words'].length == 0){
-          alert('Oops, no result, please adjust the input, eg. increase the time window');
+          alert('Oops, no result, please adjust the input, eg. increase the time window, increase the region');
           setTopicsLoaded(false);
           return;
+        }
+        else{
+          alert('Exploration successed, click Select Topic to view result')
         }
         for(let i=0; i<10; i++){
           data.topics[i]['index'] = i+1
