@@ -29,6 +29,7 @@ function MainPage() {
                 <button className='algoSearchBtn'>{Algo.buttomText}</button>
                 </Link>
               </div>
+              <img src={window.location.origin + Algo.path} alt="img" className='algoScreenshot'/>
               <p style={{flex:'3'}} >{Algo.desc}</p>
             </div>
         ))}
