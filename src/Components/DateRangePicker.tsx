@@ -10,8 +10,8 @@ export type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
 const DateRangerPicker = (props: any) => {
     const [dates, setDates] = useState<RangeValue>(null);
-    const [dateMin, setDateMin] = useState<Dayjs>(dayjs('2015-01-01', "YYYY-MM-DD"));
-    const [dateMax, setDateMax] = useState<Dayjs>(dayjs('2015-12-31', "YYYY-MM-DD"));
+    const [dateMin, setDateMin] = useState<Dayjs>(dayjs('2014-06-21', "YYYY-MM-DD"));
+    const [dateMax, setDateMax] = useState<Dayjs>(dayjs('2018-01-16', "YYYY-MM-DD"));
     const [halfRangeDate, setHalfRangeDate] = useState<Dayjs>(dayjs());
     const [defaultRange, setDefaultRange] = useState<[dayjs.Dayjs, dayjs.Dayjs]>();
 
