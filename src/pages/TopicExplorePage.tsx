@@ -48,6 +48,7 @@ function DeepRegionRepresentationPage() {
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
+    setTweetsByTopic([]);
 
     //input validation: is shape drawn?
     if (mapShapes.id === ''){
@@ -77,6 +78,11 @@ function DeepRegionRepresentationPage() {
         return res.json()
       }).then(data =>{
         console.log(data);
+        if(data['topics'][0]['words'].length == 0){
+          alert('Oops, no result, please adjust the input, eg. increase the time window');
+          setTopicsLoaded(false);
+          return;
+        }
         for(let i=0; i<10; i++){
           data.topics[i]['index'] = i+1
         }
@@ -102,6 +108,7 @@ function DeepRegionRepresentationPage() {
         mapRef.current?.ClearShapes();
   }
   }, [mapShapes]);
+
   useEffect(() => {
     if(topicSelected != 0){
       //console.log('topic selected:',topicSelected);
