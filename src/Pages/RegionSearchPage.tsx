@@ -6,10 +6,14 @@ import Map from '../components/Map';
 import InputForm from '../components/InputForm';
 
 function RegionSearchPage() {
+  interface MapShape {
+    id: string;
+    latlngs: { lat: number; lng: number }[];
+  }
   const center = [1.3484815128554006, 103.68351020563715];
 
   const [rsResponse, setRsResponse] = useState<Object | null>(null);
-  const [mapShapes, setMapShapes] = useState({id:'', latlngs:''});
+  const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
   const [drawFlag, setDrawFlag] = useState({ rectangle:true,
                                             polygon:false,
                                             polyline:false,
@@ -68,12 +72,15 @@ function RegionSearchPage() {
           <br />
           <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>Step 2: Draw a rectangle on the map</label>
           <br />
+          <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape (sw, nw, ne, se):{'\n'}{'\n'}</label>
           <div style={{maxWidth: '100px'}}>
-            <p>
-              {JSON.stringify(mapShapes,function(key, val) {
-              return val.toFixed ? Number(val.toFixed(3)) : val;})}
-            </p>
-          </div>
+                {mapShapes.latlngs.map((latlng: any)=>(
+                  <div style={{display:'flex'}}>
+                    <p style={{marginRight:'5px'}}>{latlng.lat.toFixed(3)},</p>
+                    <p>{latlng.lng.toFixed(3)}</p>
+                  </div>
+                ))}
+              </div>
         </InputForm>
         
         <Map center = {center} mapShapes={mapShapes} setMapShapes={setMapShapes} drawFlag={drawFlag} setDrawFlag={setDrawFlag}
