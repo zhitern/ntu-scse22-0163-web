@@ -65,8 +65,8 @@ function DeepRegionRepresentationPage() {
 
     // Building the query
     const query = {
-      "region": [[mapShapes.latlngs[3].lat, mapShapes.latlngs[3].lng], [mapShapes.latlngs[1].lat, mapShapes.latlngs[1].lng]],
-      "dateRange": [dateRangeInput[0]?.format('YYYY-MM-DD'), dateRangeInput[1]?.format('YYYY-MM-DD')]
+      "region": {"sw":[mapShapes.latlngs[0].lat, mapShapes.latlngs[0].lng], "ne":[mapShapes.latlngs[2].lat, mapShapes.latlngs[2].lng]},
+      "dateRange": {"minTime":dateRangeInput[0]?.format('YYYY-MM-DD'), "maxTime":dateRangeInput[1]?.format('YYYY-MM-DD')}
     };
 
     console.log(query);
