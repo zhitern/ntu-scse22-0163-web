@@ -74,7 +74,7 @@ function RegionSearchPage() {
           <br />
           <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape (sw, nw, ne, se):{'\n'}{'\n'}</label>
           <div style={{maxWidth: '100px'}}>
-                {mapShapes.latlngs.map((latlng: any)=>(
+                {mapShapes.id!='' && mapShapes.latlngs.map((latlng: any)=>(
                   <div style={{display:'flex'}}>
                     <p style={{marginRight:'5px'}}>{latlng.lat.toFixed(3)},</p>
                     <p>{latlng.lng.toFixed(3)}</p>
