@@ -132,7 +132,7 @@ function DeepRegionRepresentationPage() {
   return (
     <div style={{minHeight: '100vh'}}>
         
-      <div className="algoStartTitle">Region Topic Exploration</div>
+      <div className="algoStartTitle">Region Topics Exploration</div>
 
       <div style={{display: 'flex', paddingTop: '5vh', height: '80vh', justifyContent: 'space-evenly'}}>
 
@@ -195,7 +195,7 @@ function DeepRegionRepresentationPage() {
           drawFlag={drawFlag} 
           setDrawFlag={setDrawFlag} 
           setDrrResponse={setTopics}
-          page={'Region Search'}
+          page={'Region Topics Exploration'}
         >
           <Rectangle bounds={bounds} pathOptions={limeOptions} />
           {tweetsLoaded && tweetsByTopic.map((tweet:any) => (
