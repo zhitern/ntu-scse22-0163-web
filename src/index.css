@@ -54,7 +54,7 @@
 .navbar {
   position: relative;
   left:110px;
-  background-color: #70f1cb8e;
+  background-color: rgba(20, 220, 210, 0.78);
   border-radius: 30px;
   padding: 5px;
   display:flex;
