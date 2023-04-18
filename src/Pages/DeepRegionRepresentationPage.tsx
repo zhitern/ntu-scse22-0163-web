@@ -49,8 +49,8 @@ function DeepRegionRepresentationPage() {
     console.log(latlngs);
 
     // Building the query
-    const query = {"region": {"xmin": Math.round((mapShapes.latlngs[1].lng)*1000000)/1000000, 
-                         "ymin": Math.round((mapShapes.latlngs[1].lat)*1000000)/1000000, 
+    const query = {"region": {"xmin": Math.round((mapShapes.latlngs[0].lng)*1000000)/1000000, 
+                         "ymin": Math.round((mapShapes.latlngs[0].lat)*1000000)/1000000, 
                          "xmax": Math.round((mapShapes.latlngs[2].lng)*1000000)/1000000,
                          "ymax": Math.round((mapShapes.latlngs[2].lat)*1000000)/1000000}};
 
