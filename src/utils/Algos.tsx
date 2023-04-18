@@ -1,7 +1,7 @@
 export const Algos = 
 [
     {
-        buttomText: 'Click for Topics Exploration', 
+        buttomText: 'Click for Region Topics Exploration', 
         desc: 'Using tweets from Australia during the period of 2014-2018, mine topics within a specified bounded region and timespan and learn insights about events, trends, and public concerns within the specified region and time period.', 
         link: "/TopicExplorePage", 
         path: '/images/TE.png',
