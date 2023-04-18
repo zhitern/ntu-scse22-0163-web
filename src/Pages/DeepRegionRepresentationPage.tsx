@@ -49,10 +49,10 @@ function DeepRegionRepresentationPage() {
     console.log(latlngs);
 
     // Building the query
-    const query = {"region": {"lat": Math.round(latlngs[1]["lat"]*1000)/1000, 
-                         "lng":  Math.round(latlngs[1]["lng"]*1000)/1000, 
-                         "h": Math.abs(Math.round((latlngs[1]["lat"] - latlngs[0]["lat"])*1000)/1000),
-                         "w": Math.abs(Math.round((latlngs[1]["lng"] - latlngs[2]["lng"])*1000)/1000)}};
+    const query = {"region": {"xmin": Math.round((mapShapes.latlngs[1].lng)*1000000)/1000000, 
+                         "ymin": Math.round((mapShapes.latlngs[1].lat)*1000000)/1000000, 
+                         "xmax": Math.round((mapShapes.latlngs[2].lng)*1000000)/1000000,
+                         "ymax": Math.round((mapShapes.latlngs[2].lat)*1000000)/1000000}};
 
     console.log(query);
     fetch('http://localhost:8000/DRR', {
