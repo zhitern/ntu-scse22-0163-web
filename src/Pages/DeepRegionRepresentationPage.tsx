@@ -10,6 +10,16 @@ function DeepRegionRepresentationPage() {
     latlngs: { lat: number; lng: number }[];
   }
 
+  interface drrResponse {
+    "result":{"stat":number, "remark":any},
+    "data":{
+      "land_use_truth":Array<number>,
+      "land_use_pred":Array<number>,
+      "population_truth":number,
+      "population_pred":number
+    }
+  }
+
   const center = [1.3484815128554006, 103.68351020563715];
   
   const[mapShapes, setMapShapes] = useState<MapShape>({id:'', latlngs: []});
@@ -21,7 +31,7 @@ function DeepRegionRepresentationPage() {
                                             circlemarker:false,
                                             marker:false });
 
-  const [drrResponse, setDrrResponse] = useState({ "result":{
+  const [drrResponse, setDrrResponse] = useState<drrResponse>({ "result":{
                                                     "stat":400,
                                                     "remark":null
                                                   },
@@ -29,8 +39,8 @@ function DeepRegionRepresentationPage() {
                                                   "data":{
                                                     "land_use_truth":[],
                                                     "land_use_pred":[],
-                                                    "population_truth":[],
-                                                    "population_pred":[]
+                                                    "population_truth":0,
+                                                    "population_pred":0
                                                   } 
                                                 });
 
@@ -128,11 +138,11 @@ function DeepRegionRepresentationPage() {
                     fontWeight: "800",
                   }}
                   data={[
-                    { title: 'Residential', value: drrResponse.data.land_use_truth[0], color: 'red' },
-                    { title: 'Commercial', value: drrResponse.data.land_use_truth[1], color: 'blue' },
-                    { title: 'Industrial', value: drrResponse.data.land_use_truth[2], color: 'yellow' },
-                    { title: 'Open Space', value: drrResponse.data.land_use_truth[3], color: 'green' },
-                    { title: 'Others', value: drrResponse.data.land_use_truth[4], color: 'purple' }
+                    { title: 'Residential', value: Number(drrResponse.data.land_use_truth[0].toFixed(2)), color: 'red' },
+                    { title: 'Commercial', value: Number(drrResponse.data.land_use_truth[1].toFixed(2)), color: 'blue' },
+                    { title: 'Industrial', value: Number(drrResponse.data.land_use_truth[2].toFixed(2)), color: 'yellow' },
+                    { title: 'Open Space', value: Number(drrResponse.data.land_use_truth[3].toFixed(2)), color: 'green' },
+                    { title: 'Others', value: Number(drrResponse.data.land_use_truth[4].toFixed(2)), color: 'purple' }
                   ]}
                 />
               </div>
@@ -155,18 +165,19 @@ function DeepRegionRepresentationPage() {
                     fontWeight: "800",
                   }}
                   data={[
-                    { title: 'Residential', value: drrResponse.data.land_use_pred[0], color: 'red' },
-                    { title: 'Commercial', value: drrResponse.data.land_use_pred[1], color: 'blue' },
-                    { title: 'Industrial', value: drrResponse.data.land_use_pred[2], color: 'yellow' },
-                    { title: 'Open Space', value: drrResponse.data.land_use_pred[3], color: 'green' },
-                    { title: 'Others', value: drrResponse.data.land_use_pred[4], color: 'purple' }
+                    { title: 'Residential', value: Number(drrResponse.data.land_use_pred[0].toFixed(2)), color: 'red' },
+                    { title: 'Commercial', value: Number(drrResponse.data.land_use_pred[1].toFixed(2)), color: 'blue' },
+                    { title: 'Industrial', value: Number(drrResponse.data.land_use_pred[2].toFixed(2)), color: 'yellow' },
+                    { title: 'Open Space', value: Number(drrResponse.data.land_use_pred[3].toFixed(2)), color: 'green' },
+                    { title: 'Others', value: Number(drrResponse.data.land_use_pred[4].toFixed(2)), color: 'purple' }
                   ]}
                 />
               </div>
             }
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Prediction: {drrResponse.data.population_pred} people/kilometer square{'\n'}</p>
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Truth: {drrResponse.data.population_truth} people/kilometer square{'\n'}{'\n'}</p>
-            
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Prediction: </p>
+            <p>{Number(drrResponse.data.population_pred).toFixed(0)} people/kilometer square{'\n'}</p>
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Truth: </p>
+            <p>{Number(drrResponse.data.population_truth).toFixed(0)} people/kilometer square{'\n'}{'\n'}</p>
           </div>
         </div>
         
