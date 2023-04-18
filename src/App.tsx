@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import logo from './image/logo.png'
 
 import MainPage from "./pages/MainPage"
 import DeepRegionRepresentationPage from './pages/DeepRegionRepresentationPage';
@@ -17,7 +18,7 @@ function App() {
   return <BrowserRouter>
 
     <div className="Top" style={{maxHeight:'20vh'}}>
-          <h1 className="Title">Title/logo</h1>
+          <img src={logo} className = "logo" alt="logo" />
           <Navbar/>
     </div>
 

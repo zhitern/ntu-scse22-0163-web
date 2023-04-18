@@ -136,6 +136,15 @@
   flex: 1;
 }
 
+.logo {
+  width: 200px;
+  height: auto;
+  position: static;
+  right: 5%;
+  margin: 30px;
+  filter: drop-shadow(0 0 2rem rgba(20, 220, 210, 0.781));
+}
+
 .algoStartTitle {
   text-align: center;
   font-style: normal;
