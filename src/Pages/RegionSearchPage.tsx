@@ -25,6 +25,13 @@ function RegionSearchPage() {
 
   function handleSubmitRS(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    //input validation: is shape drawn?
+    if (mapShapes.id === ''){
+      alert('Please draw a shape');
+      return;
+    }
+    
     const latlngs = mapShapes.latlngs;
     const query = {
       'kValue': kValue, 
