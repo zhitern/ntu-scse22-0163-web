@@ -87,6 +87,10 @@ function DeepRegionRepresentationPage() {
           setDrrResponseLoaded(true);
         }
         })
+        .catch(err => {
+          alert("Couldn't reach the server, please check the server status");
+          
+        })
   };
 
   return (

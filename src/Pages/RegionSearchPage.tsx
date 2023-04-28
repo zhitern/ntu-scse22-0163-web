@@ -56,7 +56,10 @@ function RegionSearchPage() {
             }
           })
         }
-      }).catch(error => {console.log(error)});
+      }).catch(err => {
+        alert("Couldn't reach the server, please check the server status");
+        
+      })
   };
 
   return (

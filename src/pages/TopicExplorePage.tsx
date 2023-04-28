@@ -98,6 +98,9 @@ function DeepRegionRepresentationPage() {
         setTweets(data.tweets);
         setTopicsLoaded(true);
         setTweetsLoaded(true);
+        }).catch(err => {
+          alert("Couldn't reach the server, please check the server status");
+          
         })
   };
 
