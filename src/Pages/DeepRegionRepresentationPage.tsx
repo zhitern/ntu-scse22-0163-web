@@ -125,8 +125,17 @@ function DeepRegionRepresentationPage() {
           
           <div style={{background:'lightgrey', borderRadius:'20px', marginTop:'10px', padding:'5px', maxWidth:'430px'}}>
             <label style={{whiteSpace:'pre-wrap', color:'black', fontSize:'35px'}}>{'\n'}Results:{'\n'}</label>
-
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Land Use Truth:</p>
+            
+            <p>Legend:</p>
+            <div style={{border:"solid", display:"flex"}}>
+                  <div style={{flex:'1', backgroundColor:"green", padding:"3px", color:"white"}}>Open Space</div>
+                  <div style={{flex:'1', backgroundColor:"yellow", padding:"3px"}}>Industrial</div>
+                  <div style={{flex:'1', backgroundColor:"red", padding:"3px", color:"white"}}>Residential</div>
+                  <div style={{flex:'1', backgroundColor:"blue", padding:"3px", color:"white"}}>Commercial</div>
+                  <div style={{flex:'1', backgroundColor:"purple", padding:"3px", color:"white"}}>Others</div>
+            </div>
+            
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}1. Land Use Truth:</p>
             
             {drrResponse.result.stat === 200 && 
               <div>
@@ -154,7 +163,7 @@ function DeepRegionRepresentationPage() {
             }
 
             
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Land Use Prediction:{'\n'}</p>
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}2. Land Use Prediction:{'\n'}</p>
             {drrResponse.result.stat === 200 && 
               <div>
                 <PieChart 
@@ -179,9 +188,9 @@ function DeepRegionRepresentationPage() {
                 />
               </div>
             }
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Prediction: </p>
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}3. Population Prediction: </p>
             <p>{Number(drrResponse.data.population_pred).toFixed(0)} people/kilometer square{'\n'}</p>
-            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}Population Truth: </p>
+            <p style={{whiteSpace:'pre-wrap', fontWeight:'bold', fontSize:'20px', color:'crimson'}}>{'\n'}4. Population Truth: </p>
             <p>{Number(drrResponse.data.population_truth).toFixed(0)} people/kilometer square{'\n'}{'\n'}</p>
           </div>
         </div>
