@@ -68,7 +68,7 @@ function DeepRegionRepresentationPage() {
     fetch('http://localhost:8000/DRR', {
       method: 'POST',
       body: JSON.stringify(query)
-    }).then(res =>{
+    }).then(res =>{        
         return res.json()
       }).then(data =>{
         console.log(data);
@@ -88,7 +88,8 @@ function DeepRegionRepresentationPage() {
         }
         })
         .catch(err => {
-          alert("Couldn't reach the server, please check the server status");
+          alert(err.message);
+          console.log(err.message);
           
         })
   };
