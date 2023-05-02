@@ -45,6 +45,7 @@ function DeepRegionRepresentationPage() {
   const [tweetsLoaded, setTweetsLoaded] = useState(false);
   const [tweetsByTopic, setTweetsByTopic] = useState<any[]>([]);
   const [dropDownText, setDropdownText] = useState('Select Topic');
+  const [buttonText, setButtonText] = useState('Submit')
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
@@ -53,6 +54,7 @@ function DeepRegionRepresentationPage() {
     setTopicSelected(0);
     setIndexSelected(0);
     setDropdownText('Select Topic');
+    setButtonText('Loading...');
 
     //input validation: is shape drawn?
     if (mapShapes.id === ''){
@@ -85,10 +87,12 @@ function DeepRegionRepresentationPage() {
         if(data['topics'][0]['words'].length == 0){
           alert('Oops, no result, please adjust the input, eg. increase the time window, increase the region');
           setTopicsLoaded(false);
+          setButtonText('Submit');
           return;
         }
         else{
-          alert('Exploration successed, click Select Topic to view result')
+          alert('Exploration successed, click Select Topic to view result');
+          setButtonText('Submit');
         }
         for(let i=0; i<10; i++){
           data.topics[i]['index'] = i+1
@@ -98,9 +102,11 @@ function DeepRegionRepresentationPage() {
         setTweets(data.tweets);
         setTopicsLoaded(true);
         setTweetsLoaded(true);
+        setButtonText('Submit');
+
         }).catch(err => {
-          alert(err.message);
-          
+          alert("Search failed due to missing data");
+          setButtonText('Submit');
         })
   };
 
@@ -143,7 +149,7 @@ function DeepRegionRepresentationPage() {
         <div style={{display: 'flex', flexDirection:'column'}}>
           <div>
             <InputForm
-              onSubmit={handleSubmitDRR}
+              onSubmit={handleSubmitDRR} buttonText = {buttonText}
               >
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
               <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape (sw, nw, ne, se):{'\n'}{'\n'}</label>

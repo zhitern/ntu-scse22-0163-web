@@ -9,7 +9,7 @@ const InputForm = (props: any) => {
                 {props.children}
                 <br />
                 <br />
-                <input type="submit" value="Submit" />
+                <input type="submit" value={props.buttonText} />
             </form>
     );
 }
