@@ -5,7 +5,7 @@ import { useState } from 'react';
 import L from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
-import '../pages/AlgoShowcasePage.css';
+import '../Pages/AlgoShowcasePage.css';
 import "leaflet-draw/dist/leaflet.draw.css";
 
 import { control, Icon, LatLng, LatLngBoundsExpression, map, rectangle } from 'leaflet';
