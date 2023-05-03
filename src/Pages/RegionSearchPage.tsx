@@ -2,8 +2,8 @@ import { LatLngBoundsExpression } from 'leaflet';
 import React from 'react';
 import { useState } from 'react';
 import { Rectangle } from 'react-leaflet';
-import Map from '../components/Map';
-import InputForm from '../components/InputForm';
+import Map from '../Components/Map';
+import InputForm from '../Components/InputForm';
 
 function RegionSearchPage() {
   interface MapShape {
