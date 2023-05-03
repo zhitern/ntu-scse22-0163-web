@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import Map from '../components/Map';
-import InputForm from '../components/InputForm';
+import Map from '../çomponents/Map';
+import InputForm from '../çomponents/InputForm';
 import { PieChart } from 'react-minimal-pie-chart';
 
 function DeepRegionRepresentationPage() {
