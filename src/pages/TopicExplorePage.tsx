@@ -4,10 +4,10 @@ import { Marker, Popup, Rectangle } from 'react-leaflet';
 import L, { LatLngBoundsExpression, latLng } from 'leaflet';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import Map from '../Components/Map';
-import InputForm from '../Components/InputForm';
-import DateRangerPicker from '../Components/DateRangePicker';
-import { RangeValue } from '../Components/DateRangePicker';
+import Map from '../components/Map';
+import InputForm from '../components/InputForm';
+import DateRangerPicker from '../components/DateRangePicker';
+import { RangeValue } from '../components/DateRangePicker';
 
 function DeepRegionRepresentationPage() {
   interface MapShape {

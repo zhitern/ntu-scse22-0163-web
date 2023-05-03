@@ -6,12 +6,12 @@ import {
 } from "react-router-dom";
 import logo from './image/logo.png'
 
-import MainPage from "./Pages/MainPage"
-import DeepRegionRepresentationPage from './Pages/DeepRegionRepresentationPage';
-import RegionSearchPage from './Pages/RegionSearchPage';
-import TempoTestPage from './Pages/TempoTestPage';
-import TopicExplorePage from './Pages/TopicExplorePage';
-import Navbar from './Components/Navbar';
+import MainPage from "./pages/MainPage"
+import DeepRegionRepresentationPage from './pages/DeepRegionRepresentationPage';
+import RegionSearchPage from './pages/RegionSearchPage';
+import TempoTestPage from './pages/TempoTestPage';
+import TopicExplorePage from './pages/TopicExplorePage';
+import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
