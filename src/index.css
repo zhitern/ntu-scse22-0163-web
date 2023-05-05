@@ -102,7 +102,7 @@
   font-size: 70px;
   line-height: 60px;
   text-transform: capitalize;
-  filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
+  filter: drop-shadow(0 0 0.4rem #14dcd2c7);
 
   letter-spacing: 2px;
 }
@@ -160,31 +160,31 @@
   color: #000000;
 }
 
-.algoSearchBtn {
-  position: relative;
-  
-  width:fit-content;
-  height: fit-content;
-  border-radius: 20px;
-  margin-right: 10px ;
-  /* Buttons */
-  
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 27px;
-  /* or 142% */
-  
-  text-align: center;
-  text-decoration-line: underline;
-  text-transform: capitalize;
-  
-  color: #000000;
+.algoTitle {
+  text-align:center;
+  font-size:40px;
+  font-weight:bold;
+  text-decoration-line:underline;
+  filter: drop-shadow(0 0 0.4rem rgba(20, 220, 210, 0.781));
 }
 
-.algoSearchBtn:hover {
-  color: #f50000;
+.button-91 {
+  color: #fff;
+  padding: 15px 25px;
+  background-color: rgba(20, 220, 210, 0.9);
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  cursor: pointer;
 }
 
 .algoScreenshot {

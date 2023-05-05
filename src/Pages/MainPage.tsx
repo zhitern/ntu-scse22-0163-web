@@ -26,12 +26,12 @@ function MainPage() {
             <div className="algoSection" key={Algo.id}>
               <div style={{flex:'1', display:'flex'}}>
                 <Link to = {Algo.link} >
-                <button className='algoSearchBtn'>{Algo.buttomText}</button>
+                <button className='button-91'>{Algo.buttomText}</button>
                 </Link>
               </div>
               <img style={{flex:'2'}} src={window.location.origin + Algo.path} alt="img" className='algoScreenshot'/>
               <div style={{display:'flex', flexDirection:'column',flex:'3'}}>
-                <label style={{textAlign:'center', fontSize:'40px', fontWeight:'bold', textDecorationLine:'underline'}}>{Algo.title}</label>
+                <label className="algoTitle">{Algo.title}</label>
                 <p style={{flex:'3', fontSize:'25px'}} >{Algo.desc}</p>
               </div>
               

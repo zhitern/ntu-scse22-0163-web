@@ -11,7 +11,7 @@ export const Algos =
     {
         title: 'Region Search',
         buttomText: 'Click for Region Search', 
-        desc: 'Find N similar regions based on specified bounded region for effective urban planning', 
+        desc: 'Find N similar regions based on specified bounded region for effective urban planning.', 
         link: "/RegionSearchPage", 
         path: '/images/RS.png',
         id: 2 
@@ -28,7 +28,7 @@ export const Algos =
     {
         title: '',
         buttomText: 'Click for Algo 4', 
-        desc: 'Coming soon', 
+        desc: 'Coming soon...', 
         link: "/", 
         path: '',
         id: 4
