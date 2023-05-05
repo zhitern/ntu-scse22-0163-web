@@ -30,7 +30,11 @@ function MainPage() {
                 </Link>
               </div>
               <img style={{flex:'2'}} src={window.location.origin + Algo.path} alt="img" className='algoScreenshot'/>
-              <p style={{flex:'3', fontSize:'30px'}} >{Algo.desc}</p>
+              <div style={{display:'flex', flexDirection:'column',flex:'3'}}>
+                <label style={{textAlign:'center', fontSize:'40px', fontWeight:'bold', textDecorationLine:'underline'}}>{Algo.title}</label>
+                <p style={{flex:'3', fontSize:'25px'}} >{Algo.desc}</p>
+              </div>
+              
             </div>
         ))}
       </div>
