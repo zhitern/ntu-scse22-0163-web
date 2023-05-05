@@ -26,7 +26,7 @@ function MainPage() {
             <div className="algoSection" key={Algo.id}>
               <div style={{flex:'1', display:'flex'}}>
                 <Link to = {Algo.link} >
-                <button className='button-91'>{Algo.buttomText}</button>
+                <button className='button-87'>{Algo.buttomText}</button>
                 </Link>
               </div>
               <img style={{flex:'2'}} src={window.location.origin + Algo.path} alt="img" className='algoScreenshot'/>
