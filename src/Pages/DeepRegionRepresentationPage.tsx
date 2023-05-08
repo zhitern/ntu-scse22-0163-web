@@ -45,9 +45,11 @@ function DeepRegionRepresentationPage() {
                                                 });
 
   const [drrResponseLoaded, setDrrResponseLoaded] = useState(false);
+  const [buttonText, setButtonText] = useState('Submit')
 
   function handleSubmitDRR(event: React.SyntheticEvent<HTMLFormElement>)  {
     event.preventDefault();
+    setButtonText('Loading...');
 
     //input validation: is shape drawn?
     if (mapShapes.id === ''){
@@ -75,11 +77,13 @@ function DeepRegionRepresentationPage() {
         
         if(data["result"]["stat"] === 400){
           alert(data["result"]["remark"]);
+          setButtonText('Submit');
           return;
         }
 
         if(data["result"]["stat"] === 200){
-          alert(data["result"]["remark"])
+          alert(data["result"]["remark"]);
+          setButtonText('Submit');
         }
 
         if (data.hasOwnProperty('data')){
@@ -105,7 +109,7 @@ function DeepRegionRepresentationPage() {
         <div style={{display: 'flex', flexDirection:'column'}}>
           <div>
             <InputForm
-              onSubmit={handleSubmitDRR}
+              onSubmit={handleSubmitDRR} buttonText = {buttonText}
               >
               <label style={{whiteSpace:'pre-wrap', fontSize:'25px'}}>- Step 1: Draw a polygon or rectangle{'\n'}{'\n'}</label>
               <label style={{whiteSpace:'pre-wrap', color:'blue'}}>Coordinates of the shape (sw, nw, ne, se):{'\n'}{'\n'}</label>
